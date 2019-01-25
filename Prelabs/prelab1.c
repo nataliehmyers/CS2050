@@ -35,9 +35,9 @@ int main(void){
     }*/
 
     int count = integer_search(size, target, pointer);
-    printf("\nThe number of occurrences of integer %d in the array is %d", target, count);
+    printf("\nThe number of occurrences of integer %d is %d\n", target, count);
     if (count == 0) {
-        printf("\nInteger %d has no index", target);
+        printf("\nInteger %d has no index\n", target);
     }
     return 0;
 }
