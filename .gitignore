@@ -1,0 +1,5 @@
+# IDE
+.idea/
+
+# cmake shit
+cmake-build-debug/
