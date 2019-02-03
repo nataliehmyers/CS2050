@@ -4,32 +4,40 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void* createArray(int n, int dataTypeSize);
-
+void* createArray(int numElements, int dataTypeSize);
+void freeArray(void *numArray);
 
 int main(void){
-    int n, dataTypeSize;
-    float *numarray;
+     int numElements, dataTypeSize;
+    void *numArray;
 
-    printf("Enter the size of the data type you would like to use: ");
-    scanf("%d", &dataTypeSize);
+    printf("Enter the size of the data type you would like to use: "); // prompts user for size of data type
+    scanf("%d", &dataTypeSize); // assigns input to variable
 
-    printf("\nEnter the size of the array you want to create: ");
-    scanf("%d", &n);
+    printf("\nEnter the size of the array you want to create: "); // prompts user for size of array
+    scanf("%d", &numElements); // assigns input to variable
 
-    numarray = createArray(n, dataTypeSize);
 
-    for (int i = 0; i < n; i++){
-        printf("%.2f ", numarray[i]);
-    } // Todo: Fix index offset
+    numArray = createArray(numElements, dataTypeSize); // calls createArray function to essentially malloc array
+
+    freeArray(numArray); // frees memory
+
+    return 0;
 }
 
 
-void* createArray(n, dataTypeSize) {
+void* createArray(int numElements, int dataTypeSize) { // malloc with size of array stored as an element in the array
     int *array;
-    array = malloc(n*dataTypeSize + sizeof(int)); // ToDo: Find how to check if malloc worked
-    array[0] = n;
-    array++;
-    // free((void *)(array+1)); ???
-    return (void *)(array+1); // ToDo: Ask how to free memory here
+    array = malloc(sizeof(int) + numElements*dataTypeSize); // malloc size of array and size of int (for integer of elements)
+    if (array == NULL) { // checks if malloc failed
+        printf("\nMalloc failed. Cannot recover. Exiting...\n");
+        exit(1);
+    }
+    array[0] = numElements; // assigns number of elements to first element of array
+    array++; // increments through the array to offset indexes
+    return (void *)(array);
+}
+
+void freeArray(void * numArray) {
+    free(numArray-(sizeof(int))); // frees original array
 }
