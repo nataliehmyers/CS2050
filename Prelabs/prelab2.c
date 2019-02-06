@@ -39,5 +39,5 @@ void* createArray(int numElements, int dataTypeSize) { // malloc with size of ar
 }
 
 void freeArray(void * numArray) {
-    free(numArray-(sizeof(int))); // frees original array
+    free(numArray-(sizeof(int)));
 }
