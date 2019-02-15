@@ -1,15 +1,22 @@
+//#include <stdio.h>
+//#include <stdlib.h>
+//
+//int main() {
+//    int a, b, c;
+//    printf("Enter a date:");
+//    scanf("%d%*c%d%*c%d", &a, &b, &c);
+//    printf("%d-%d-%d is your date.", a, b, c);
+//    return 0;
+//}
+
+
+
 // prelab4.c - Takes a file, reads in the number of structs, and creates that many structs.
 // Created by Natalie Myers on 2/10/19.
 
 #include <stdio.h>
 #include <stdlib.h>
 #include "struct.c"
-
-typedef struct employee_ {
-    char name[20];
-    int age;
-}employee;
-
 
 int get_size(FILE *);
 void get_data(struct Example[], int, FILE *);
@@ -28,10 +35,8 @@ int main(int argc, char *argv[]){
     get_data(examples, size, fp);
 
     for (int i = 0; i < size; i++) { // prints struct information
-        printf("\nname:%s age:%d", examples[i].name, examples[i].age);
+        printf("\nID:%d age:%d", examples[i].name, examples[i].age);
     }
-    
-    
 }
 
 int get_size(FILE *fp) {
@@ -43,7 +48,8 @@ int get_size(FILE *fp) {
 
 void get_data(struct Example examples[], int size, FILE *fp) {
     for (int i = 0; i < size; i++) { // iterates through file
-        //fscanf(fp, "%s %d", examples[i].name, &examples[i].age); // assigns struct information
-        fscanf(fp, "%s ", examples[i].name);
+        fscanf(fp, "%d%*c %d", &examples[i].name, &examples[i].age); // assigns struct information
     }
 }
+
+// %*c only works with integer lists
