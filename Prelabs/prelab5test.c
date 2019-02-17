@@ -1,4 +1,3 @@
-//
 // Created by Natalie Myers on 2/17/19.
 
 #include <stdio.h>
@@ -16,6 +15,7 @@ Employee ** createEmployeeArray(int);
 int addNewEmployee(Employee *, Employee**);
 int getIndex(Employee **array);
 void* freeEmployeeArray(Employee**);
+void fillArray(char*, Employee*, Employee**);
 
 int main(int argc, char *argv[]){
     if (argc != 2) { // checks for appropriate number of command line arguments
@@ -26,14 +26,11 @@ int main(int argc, char *argv[]){
     getSize(array);
     getIndex(array);
 
+    char *filename = argv[1];
+
     Employee* p = malloc(sizeof(Employee));
 
-    p->ID = 12;
-    p->salary = 888888;
-    p->age = 11;
-    p->SSN = 1234;
-
-    addNewEmployee(p, array);
+    fillArray(filename, p, array);
 
     array = freeEmployeeArray(array);
     if (array != NULL) {
@@ -92,11 +89,19 @@ void *freeEmployeeArray(Employee** array) {
     return array;
 }
 
-//int getSize(char* filename) {
-//    int maxLength;
-//    FILE *fp; // defines a FILE pointer
-//    fp = fopen(filename, "r"); // opens a file in read mode and sets the command to a variable
-//    fscanf(fp, "%d", &maxLength);
-//    fclose(fp);
-//    return maxLength;
-//}
+void fillArray(char* filename, Employee* p, Employee** array) {
+    int maxLength;
+
+    FILE *fp; // defines a FILE pointer
+    fp = fopen(filename, "r"); // opens a file in read mode and sets the command to a variable
+
+    fscanf(fp, "%d", &maxLength);
+    for (int i = 0; i < maxLength; i++) {
+        fscanf(fp, "%d%*c%f%*c%d%*c%f", &p->ID, &p->salary, &p->age, &p->SSN);
+        addNewEmployee(p, array);
+        printf("ID: %d\tSalary: %.2f\tAge: %d\tSSN: %.2f\n", p->ID, p->salary, p->age, p->SSN);
+    }
+    fclose(fp);
+}
+
+//void printArray()
