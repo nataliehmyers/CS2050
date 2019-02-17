@@ -15,20 +15,16 @@ Employee ** createEmployeeArray(int);
 int addNewEmployee(Employee *, Employee**);
 int getIndex(Employee **array);
 void* freeEmployeeArray(Employee**);
-void fillArray(char*, Employee**);
+Employee** fillArray(char*);
 
 int main(int argc, char *argv[]){
     if (argc != 2) { // checks for appropriate number of command line arguments
         printf("Insufficient arguments! Load the correct number of input arguments!\n");
         return 1;
     }
-    Employee** array = createEmployeeArray(500);
-    getSize(array);
-    getIndex(array);
 
     char *filename = argv[1];
-
-    fillArray(filename, array);
+    Employee **array = fillArray(filename);
 
     for (int i=0; i<getIndex(array); i++) {
         printf("ID: %d\tSalary: %.2f\tAge: %d\tSSN: %.2f\n", array[i]->ID, array[i]->salary, array[i]->age, array[i]->SSN);
@@ -98,18 +94,19 @@ void *freeEmployeeArray(Employee** array) {
     return array;
 }
 
-void fillArray(char* filename, Employee** array) {
+Employee** fillArray(char* filename) {
     int maxLength;
 
     FILE *fp; // defines a FILE pointer
     fp = fopen(filename, "r"); // opens a file in read mode and sets the command to a variable
 
     fscanf(fp, "%d", &maxLength);
+    Employee** array = createEmployeeArray(maxLength);
     for (int i = 0; i < maxLength; i++) {
         Employee* p = malloc(sizeof(Employee));
         fscanf(fp, "%d%*c%f%*c%d%*c%f", &p->ID, &p->salary, &p->age, &p->SSN);
         addNewEmployee(p, array);
     }
     fclose(fp);
+    return array;
 }
-
