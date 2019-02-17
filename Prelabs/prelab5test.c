@@ -15,7 +15,7 @@ Employee ** createEmployeeArray(int);
 int addNewEmployee(Employee *, Employee**);
 int getIndex(Employee **array);
 void* freeEmployeeArray(Employee**);
-void fillArray(char*, Employee*, Employee**);
+void fillArray(char*, Employee**);
 
 int main(int argc, char *argv[]){
     if (argc != 2) { // checks for appropriate number of command line arguments
@@ -28,9 +28,11 @@ int main(int argc, char *argv[]){
 
     char *filename = argv[1];
 
-    Employee* p = malloc(sizeof(Employee));
+    fillArray(filename, array);
 
-    fillArray(filename, p, array);
+    for (int i=0; i<getIndex(array); i++) {
+        printf("ID: %d\tSalary: %.2f\tAge: %d\tSSN: %.2f\n", array[i]->ID, array[i]->salary, array[i]->age, array[i]->SSN);
+    }
 
     array = freeEmployeeArray(array);
     if (array != NULL) {
@@ -41,7 +43,7 @@ int main(int argc, char *argv[]){
 }
 
 Employee ** createEmployeeArray(int maxLength) {
-    void* vp = malloc(maxLength*(sizeof(Employee))+2*sizeof(int));
+    void* vp = malloc(maxLength*(sizeof(Employee*))+2*sizeof(int));
     int* ip = vp;
     *ip = maxLength;
     ip+=1;
@@ -69,11 +71,18 @@ int getIndex(Employee** array) {
     return index;
 }
 
+void incrementIndex(Employee** array) {
+    void* vp = array;
+    int* ip = vp;
+    ip[-1]++;
+}
+
 int addNewEmployee(Employee* p, Employee** array) {
     int maxLength = getSize(array);
     int index = getIndex(array);
     if (index <= maxLength) {
         array[index] = p;
+        incrementIndex(array);
         return index;
     } else {
         return -1;
@@ -89,7 +98,7 @@ void *freeEmployeeArray(Employee** array) {
     return array;
 }
 
-void fillArray(char* filename, Employee* p, Employee** array) {
+void fillArray(char* filename, Employee** array) {
     int maxLength;
 
     FILE *fp; // defines a FILE pointer
@@ -97,11 +106,10 @@ void fillArray(char* filename, Employee* p, Employee** array) {
 
     fscanf(fp, "%d", &maxLength);
     for (int i = 0; i < maxLength; i++) {
+        Employee* p = malloc(sizeof(Employee));
         fscanf(fp, "%d%*c%f%*c%d%*c%f", &p->ID, &p->salary, &p->age, &p->SSN);
         addNewEmployee(p, array);
-        printf("ID: %d\tSalary: %.2f\tAge: %d\tSSN: %.2f\n", p->ID, p->salary, p->age, p->SSN);
     }
     fclose(fp);
 }
 
-//void printArray()
