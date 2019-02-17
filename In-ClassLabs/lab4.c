@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 
 // Function prototypes
 
@@ -56,13 +55,13 @@ int main(int argc, char *argv[]) {
     if (SSN1 != -1) {
         printf("Employee ID %d has SSN %d\n", SSN1, search1);
     } else {
-        printf("No employee found with SSN %d\n", search1);
+        printf("No employeePrelab5 found with SSN %d\n", search1);
     }
     SSN2 = findEmployeeID(array, num, search2);
     if (SSN2 != -1) {
         printf("Employee ID %d has SSN %d\n", SSN2, search2);
     } else {
-        printf("No employee found with SSN %d\n", search2);
+        printf("No employeePrelab5 found with SSN %d\n", search2);
     }
     freeArray((int*)array);
     fclose(fp);
@@ -88,8 +87,8 @@ Employee* createArray(FILE* fp){
     fscanf(fp, "%d\n", &length);
     array = malloc(sizeof(int) + sizeof(Employee) * length);
     array[0] = length;
-    //array++;
-    return (Employee*)(array + 1);
+    array++;
+    return (Employee*)(array);
 }
 
 int findEmployeeID(Employee* array, int size, int SSN) {
@@ -103,12 +102,6 @@ int findEmployeeID(Employee* array, int size, int SSN) {
 }
 
 int numOfEmployee(int *array) {
-
-//    --array;// array - 1
-//    array--;// array
-
-    //*(array - 1);
-
     return *(array - 1);
 }
 
@@ -145,5 +138,5 @@ void freeArray(int *array){
 //}
 
 //int findEmployeeID(){
-//    should search for employee ID
+//    should search for employeePrelab5 ID
 //}

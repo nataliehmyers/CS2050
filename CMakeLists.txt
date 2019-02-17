@@ -12,8 +12,8 @@ add_executable(prelab4test.c Prelabs/prelab4test.c)
 add_executable(prelab4comma.c Prelabs/prelab4comma.c)
 add_executable(lab4.c In-ClassLabs/lab4.c)
 add_executable(prelab5.c Prelabs/prelab5.c)
-
-
+add_executable(prelab5Redone.c Prelabs/prelab5Redone.c)
+add_executable(prelab5test.c Prelabs/prelab5test.c)
 
 
 add_executable(fibonacci_sequence Side-projects/fibonacci_sequence.c)
