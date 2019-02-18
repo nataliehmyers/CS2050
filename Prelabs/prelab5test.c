@@ -16,6 +16,7 @@ int addNewEmployee(Employee *, Employee**);
 int getIndex(Employee **array);
 void* freeEmployeeArray(Employee**);
 Employee** fillArray(char*);
+void printArray(Employee**);
 
 int main(int argc, char *argv[]){
     if (argc != 2) { // checks for appropriate number of command line arguments
@@ -26,9 +27,7 @@ int main(int argc, char *argv[]){
     char *filename = argv[1];
     Employee **array = fillArray(filename);
 
-    for (int i=0; i<getIndex(array); i++) {
-        printf("ID: %d\tSalary: %.2f\tAge: %d\tSSN: %.2f\n", array[i]->ID, array[i]->salary, array[i]->age, array[i]->SSN);
-    }
+    printArray(array);
 
     array = freeEmployeeArray(array);
     if (array != NULL) {
@@ -56,8 +55,8 @@ Employee ** createEmployeeArray(int maxLength) {
 int getSize(Employee** array) {
     void* vp = array;
     int* ip = vp;
-    int index = ip[-2];
-    return index;
+    int maxLength = ip[-2];
+    return maxLength;
 }
 
 int getIndex(Employee** array) {
@@ -109,4 +108,11 @@ Employee** fillArray(char* filename) {
     }
     fclose(fp);
     return array;
+}
+
+void printArray(Employee** array) {
+    int maxLength = getSize(array);
+    for (int i = 0; i < maxLength; i++) {
+        printf("ID: %d\tSalary: %.2f\tAge: %d\tSSN: %.2f\n", array[i]->ID, array[i]->salary, array[i]->age, array[i]->SSN);
+    }
 }
