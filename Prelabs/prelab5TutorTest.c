@@ -19,6 +19,7 @@ Employee** fillArray(char*);
 void printArray(Employee**);
 
 int main(int argc, char *argv[]){
+
     if (argc != 2) { // checks for appropriate number of command line arguments
         printf("Insufficient arguments! Load the correct number of input arguments!\n");
         return 1;
@@ -27,7 +28,14 @@ int main(int argc, char *argv[]){
     char *filename = argv[1];
     Employee **array = fillArray(filename);
 
-    printArray(array);
+    /*  Employee* emp = malloc(sizeof(emp));
+      emp->ID = 439;
+      emp->salary = 120000;
+      emp->age = 20;
+      emp->SSN = 4399725;
+      addNewEmployee(emp, array);
+      */
+    //printArray(array);
 
     array = freeEmployeeArray(array);
     if (array != NULL) {
@@ -38,30 +46,33 @@ int main(int argc, char *argv[]){
 }
 
 Employee ** createEmployeeArray(int maxLength) {
-    void* vp = malloc(maxLength*(sizeof(Employee*))+2*sizeof(int)); // allocates memory for void pointer
-    int* ip = vp; // creates integer pointer to void pointer
-    *ip = maxLength; // assigns maxLength to first element of integer array
-    ip+=1; // iterates through integer pointer to set maxLength to index -1
-    *ip = 0; // assigns index number 0 to new first element of integer array
-    ip+=1; // iterates through integer pointer
+    void* vp = malloc(maxLength*(sizeof(Employee*))+2*sizeof(int));
+
+    int* ip = (int*)vp;
+    *ip = maxLength;
+    ip+=1;
+    *ip = 0;
+    ip+=1;
     vp = ip;
     Employee** array = vp;
-    for (int i = 0; i < maxLength; i++) {
-        array[i] = malloc(sizeof(Employee));
-    }
+    //for (int i = 0; i < maxLength; i++) {
+    //  array[i] = malloc(sizeof(Employee));
+    // }
+    printf("maxLength %d\n", maxLength);
     return array;
 }
 
 int getSize(Employee** array) {
-    void* vp = array;
-    int* ip = vp;
-    int maxLength = ip[-2];
+    void* vp = (void*)array;
+    //int* ip = (int*)vp;
+    //int maxLength = ip[-2];
+    int maxLength = *((int*)vp - 2);
     return maxLength;
 }
 
 int getIndex(Employee** array) {
-    void* vp = array;
-    int* ip = vp;
+    void* vp = (void*)array;
+    int* ip = (int*)vp;
     int index = ip[-1];
     return index;
 }
@@ -85,10 +96,12 @@ int addNewEmployee(Employee* p, Employee** array) {
 }
 
 void *freeEmployeeArray(Employee** array) {
-    for (int i = 0; i < 0; i++) {
+    int index = getIndex(array);
+    printf("intdex %d\n", index);
+    for (int i = 0; i < index; i++) {
         free(array[i]);
     }
-    free(*array);
+    free((int*)array - 2);
     array = NULL;
     return array;
 }
@@ -103,8 +116,10 @@ Employee** fillArray(char* filename) {
     Employee** array = createEmployeeArray(maxLength);
     for (int i = 0; i < maxLength; i++) {
         Employee* p = malloc(sizeof(Employee));
-        fscanf(fp, "%d%*c%f%*c%d%*c%f", &p->ID, &p->salary, &p->age, &p->SSN);
-        addNewEmployee(p, array);
+        if(fscanf(fp, "%d%*c%f%*c%d%*c%f", &p->ID, &p->salary, &p->age, &p->SSN) > 0)
+            addNewEmployee(p, array);
+        else
+            free(p);
     }
     fclose(fp);
     return array;
