@@ -97,7 +97,7 @@ int addNewEmployee(Employee* p, Employee** array) {
 
 void *freeEmployeeArray(Employee** array) {
     int index = getIndex(array);
-    printf("intdex %d\n", index);
+    printf("index %d\n", index);
     for (int i = 0; i < index; i++) {
         free(array[i]);
     }
