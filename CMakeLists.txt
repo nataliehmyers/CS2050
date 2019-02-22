@@ -16,8 +16,8 @@ add_executable(prelab5Redone.c Prelabs/prelab5Redone.c)
 add_executable(prelab5test.c Prelabs/prelab5test.c)
 add_executable(prelab5TutorTest.c Prelabs/prelab5TutorTest.c)
 add_executable(prelab5Review.c Prelabs/prelab5Review.c)
-
-
+add_executable(lab5.c In-ClassLabs/lab5.c)
+add_executable(prelab6.c Prelabs/prelab6.c)
 
 
 
