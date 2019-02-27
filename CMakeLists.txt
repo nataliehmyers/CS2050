@@ -18,6 +18,8 @@ add_executable(prelab5TutorTest.c Prelabs/prelab5TutorTest.c)
 add_executable(prelab5Review.c Prelabs/prelab5Review.c)
 add_executable(lab5.c In-ClassLabs/lab5.c)
 add_executable(prelab6.c Prelabs/prelab6.c)
+add_executable(prelab6coreFunctions Prelabs/prelab6coreFunctions.c)
+add_executable(lab6.c In-ClassLabs/lab6.c)
 
 
 
