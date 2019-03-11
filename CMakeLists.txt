@@ -20,6 +20,8 @@ add_executable(lab5.c In-ClassLabs/lab5.c)
 add_executable(prelab6.c Prelabs/prelab6.c)
 add_executable(prelab6coreFunctions Prelabs/prelab6coreFunctions.c)
 add_executable(lab6.c In-ClassLabs/lab6.c)
+add_executable(double_pointer_exercise.c Prelabs/double_pointer_exercise.c)
+add_executable(lab6redone.c Prelabs/lab6redone.c)
 
 
 
