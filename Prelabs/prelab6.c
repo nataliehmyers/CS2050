@@ -110,32 +110,6 @@ List* insertInOrder(List* head, int value) {
     return head;
 }
 
-void printList(List* head) {
-    if(head == NULL){
-        printf("The list is empty!\n");
-        return;
-    }
-    List* cur = head;
-//    printf("The list is:\n");
-    while(cur->next != NULL) {
-        printf("%d ", cur->key);
-        cur = cur->next;
-    }
-    printf("%d\n", cur->key);
-}
-
-void freeList(List* head) {
-    List* cur = head;
-    if(head == NULL)
-        return;
-    while(cur->next != NULL) {
-        head = head->next;
-        free(cur);
-        cur = head;
-    }
-    free(head);
-}
-
 List* removeKey(List* head, int value) {
     List* cur = head;
     List* prev = NULL;
@@ -180,6 +154,32 @@ List* removeKey(List* head, int value) {
 // ToDo: Add message for remove int not in list.
 // ToDo: Remove all instances of int if it appears more than once.
     return head;
+}
+
+void printList(List* head) {
+    if(head == NULL){
+        printf("The list is empty!\n");
+        return;
+    }
+    List* cur = head;
+//    printf("The list is:\n");
+    while(cur->next != NULL) {
+        printf("%d ", cur->key);
+        cur = cur->next;
+    }
+    printf("%d\n", cur->key);
+}
+
+void freeList(List* head) {
+    List* cur = head;
+    if(head == NULL)
+        return;
+    while(cur->next != NULL) {
+        head = head->next;
+        free(cur);
+        cur = head;
+    }
+    free(head);
 }
 
 // ToDo: Make circular?

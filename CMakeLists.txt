@@ -22,7 +22,12 @@ add_executable(prelab6coreFunctions Prelabs/prelab6coreFunctions.c)
 add_executable(lab6.c In-ClassLabs/lab6.c)
 add_executable(double_pointer_exercise.c Prelabs/double_pointer_exercise.c)
 add_executable(lab6redone.c Prelabs/lab6redone.c)
-
+add_executable(prelab7.c Prelabs/prelab7.c)
+add_executable(lab7.c In-ClassLabs/lab7.c)
+add_executable(lab7peer0.c In-ClassLabs/lab7peer0.c)
+add_executable(lab7peer1.c In-ClassLabs/lab7peer1.c)
+add_executable(scratchwork.c Prelabs/scratchwork.c)
+add_executable(Tahan_Nick_Prelab8.c Prelabs/Tahan_Nick_Prelab8.c)
 
 
 
