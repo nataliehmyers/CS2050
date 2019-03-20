@@ -28,6 +28,7 @@ add_executable(lab7peer0.c In-ClassLabs/lab7peer0.c)
 add_executable(lab7peer1.c In-ClassLabs/lab7peer1.c)
 add_executable(scratchwork.c Prelabs/scratchwork.c)
 add_executable(Tahan_Nick_Prelab8.c Prelabs/Tahan_Nick_Prelab8.c)
+add_executable(lab9.c In-ClassLabs/lab9.c)
 
 
 
