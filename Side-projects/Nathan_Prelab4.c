@@ -2,23 +2,22 @@
 #include <math.h>
 
 double MyPower(double, int);
-void DoTest(double, int);
 
 int main(void){
-    int i, j;
-    for(i = 1; i < 5; i++){
-        for(j = 1; i < 5; i++){
-            DoTest(i, j);
-        }
-    }
-    double power = MyPower(i, j);
-    printf("%ld\n", power);
+    double base;
+    int exponent;
+    printf("Gimme two numbers: ");
+    scanf("%lf %d", &base, &exponent);
+    double result  = MyPower(base, exponent);
+    printf("Result: %lf", result);
     return 0;
 }
 
 double MyPower(double base, int exponent){
-    for(int i = 0; i < exponent; i++){
-        base * base;
+    double total = 1;
+    while(exponent != 0){
+        total *= base;
+        --exponent;
     }
-    return base;
+    return total;
 }
