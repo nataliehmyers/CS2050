@@ -77,4 +77,5 @@ void freeRecordArray(Record ***array, int numElems){
     }
     free(*array);
     free(array);
+    array = NULL;
 }
