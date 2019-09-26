@@ -56,7 +56,10 @@ void* createArray(int size, int elemsize){
 }
 
 int getArraySize(void *array){
-    /* Function recieves array by reference, accesses file, scans for first value, records it as size, and returns it. */
+    /* Function receives array by reference, accesses file, scans for first value, records it as size, and returns it. */
+
+    //return *((int*)(array)-2);
+
     FILE *fp;
     int size;
     char filename[100] = "/Users/natalie/Documents/CLionProjects/CS2050/cmake-build-debug/employee.csv";
@@ -68,6 +71,14 @@ int getArraySize(void *array){
 
 void freeArray(void *array){
     /* Function receives void array by reference and frees it. */
+
+//    free((int*)(array)-2);
+//
+//    OR
+//
+//    array = (int*)(array)-2;
+//    free(array);
+
     free(array);
 }
 
