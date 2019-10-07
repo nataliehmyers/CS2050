@@ -27,7 +27,7 @@ List* initIntegerList(){
 
 void printList(List* head) {
     if(head == NULL){
-        printf("The list is empty!\n");
+        printf("The List is empty!\n");
         return;
     }
     List* cur = head;

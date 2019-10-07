@@ -43,10 +43,10 @@ int main(void){
     head = removeKey(head, value);
 
 
-    printf("Removed list: ");
+    printf("Removed List: ");
     printList(head);
     head = reverseList(head);
-    printf("Reversed list: ");
+    printf("Reversed List: ");
     printList(head);
     freeList(head);
 }
@@ -148,21 +148,21 @@ List* removeKey(List* head, int value) {
     // handle
     //    ToDo: Add in conditionals for head and tail removal
     if (found == 0) {
-        printf("Key not found in list. Nothing removed.\n");
+        printf("Key not found in List. Nothing removed.\n");
         //        printList(head);
     }
-// ToDo: Add message for remove int not in list.
+// ToDo: Add message for remove int not in List.
 // ToDo: Remove all instances of int if it appears more than once.
     return head;
 }
 
 void printList(List* head) {
     if(head == NULL){
-        printf("The list is empty!\n");
+        printf("The List is empty!\n");
         return;
     }
     List* cur = head;
-//    printf("The list is:\n");
+//    printf("The List is:\n");
     while(cur->next != NULL) {
         printf("%d ", cur->key);
         cur = cur->next;

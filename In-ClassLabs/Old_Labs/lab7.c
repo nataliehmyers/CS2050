@@ -77,7 +77,7 @@ int insertNodeBasedOnIndex(Node** head, int index){ // inserts a node in the pas
 
     cur->r = malloc(sizeof(Tri));
     cur->next = NULL;
-    if(((void*)head) == NULL){ // checks if reached end of list
+    if(((void*)head) == NULL){ // checks if reached end of List
         return -1;
     }
     while(head){ // while true statement to iterate through
@@ -109,8 +109,8 @@ int removeNodeBasedOnValue(Node** head, int value){ // removes a node based on a
     }
     prev = cur;
     cur = cur->next;
-    while(cur->next != NULL){ // conditional for reaching end of list
-        if(cur->r->height == value){ // conditional for value found in list
+    while(cur->next != NULL){ // conditional for reaching end of List
+        if(cur->r->height == value){ // conditional for value found in List
             prev->next = cur->next;
             free(cur);
             return 0;
@@ -120,22 +120,22 @@ int removeNodeBasedOnValue(Node** head, int value){ // removes a node based on a
     }
     prev->next = NULL;
     free(cur);
-    if (found == 0) { // conditional for value not stored in list
-        printf("Value not found in list. Nothing removed.\n");
+    if (found == 0) { // conditional for value not stored in List
+        printf("Value not found in List. Nothing removed.\n");
     }
 }
 
-void printReverseList(Node* head){ // reverses list and calls print function
+void printReverseList(Node* head){ // reverses List and calls print function
     Node* cur = head;
     Node* prev = NULL;
-    if(head->next == NULL) // conditional for reaching end of list
+    if(head->next == NULL) // conditional for reaching end of List
         exit;
     prev = cur;
     cur = cur->next;
     prev->next = NULL;//the head now is the new tail
     Node* next = cur->next;
     cur->next = prev;//now the first two nodes are reversed
-    while (next != NULL) { // conditional for reaching end of list
+    while (next != NULL) { // conditional for reaching end of List
         prev = cur;
         cur = next;
         next = next->next;

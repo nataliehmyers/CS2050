@@ -70,7 +70,7 @@ void printList(Node* head){
 
 /* Mr. Miku, I would love to know what miku means... let me know! -D */
 
-// Adds a new node given a specific location in the list, returns 1 if successful, -1 if not.
+// Adds a new node given a specific location in the List, returns 1 if successful, -1 if not.
 int insertNodeBasedOnIndex(Node** list, int location)
 {
     Node* node = malloc(sizeof(Node));
@@ -126,7 +126,7 @@ int removeNodeBasedOnValue(Node** list,int key)
 
     if(hold == NULL)
     {
-        printf("No list exists.\n");
+        printf("No List exists.\n");
         return(-1);
     }
 
@@ -159,7 +159,7 @@ int removeNodeBasedOnValue(Node** list,int key)
     }
 }
 
-// Prints the list backwards.
+// Prints the List backwards.
 void printReverseList(Node* list)
 {
     Node* hold = list;

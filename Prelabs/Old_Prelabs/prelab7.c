@@ -53,11 +53,11 @@ int insertInOrder(List** ptr) {
 
 void printList(List* head) {
     if(head == NULL){
-        printf("The list is empty!\n");
+        printf("The List is empty!\n");
         return;
     }
     List* cur = head;
-//    printf("The list is:\n");
+//    printf("The List is:\n");
     while(cur->next != NULL) {
         printf("%d ", cur->key);
         cur = cur->next;
@@ -100,7 +100,7 @@ int removeKey(List** ptr) {
     prev->next = NULL;
     free(cur);
     if (found == 0) {
-        printf("Key not found in list. Nothing removed.\n");
+        printf("Key not found in List. Nothing removed.\n");
         //        printList(head);
     }
     return head;

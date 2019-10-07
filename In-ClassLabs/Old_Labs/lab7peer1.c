@@ -69,7 +69,7 @@ void printList(Node* head){
 // Please do not change the code above -- points will be deducted if you do.
 
 /*
- * Inserts a new node into the provided list at the given index.
+ * Inserts a new node into the provided List at the given index.
  * Takes the address of the linkedList and the insertion index.
  * Returns -1 if the insertion failed.
  * Returns 1 if the insertion was successful.
@@ -99,21 +99,21 @@ int insertNodeBasedOnIndex(Node **list, int index)
     tri->base = rand()%10+1;
     node->r = tri; // point to triangle
 
-    // logic for inserting into list
+    // logic for inserting into List
 
     if (*list == NULL && index != 0)
     {
-        return -1; // always have to insert at 0 for an empty list
+        return -1; // always have to insert at 0 for an empty List
     }
 
-    if (index == 0) // inserting at the head of the list
+    if (index == 0) // inserting at the head of the List
     {
         node->next = *list;
         *list = node;
         return 1;
     }
 
-    else // not inserting at the head of the list
+    else // not inserting at the head of the List
     {
         Node *currentNode = *list;
 
@@ -123,7 +123,7 @@ int insertNodeBasedOnIndex(Node **list, int index)
 
             if (currentNode == NULL)
             {
-                return -1; // out of bounds of list
+                return -1; // out of bounds of List
             }
         }
 
@@ -147,7 +147,7 @@ int removeNodeBasedOnValue(Node **list, int base)
         return -1;
     }
 
-    Node *currentNode = *list; // start at head of list
+    Node *currentNode = *list; // start at head of List
     Node *previousNode = NULL;
 
     while (currentNode != NULL && currentNode->r->base != base)
@@ -161,10 +161,10 @@ int removeNodeBasedOnValue(Node **list, int base)
         return -1;
     }
 
-    if (previousNode == NULL) // node we are removing is the head of the list
+    if (previousNode == NULL) // node we are removing is the head of the List
     {
         Node *nextNode = currentNode->next;
-        *list = nextNode; // set the new head of the list as the node following the current head
+        *list = nextNode; // set the new head of the List as the node following the current head
         free(currentNode->r);
         free(currentNode);
         return 1;
@@ -172,7 +172,7 @@ int removeNodeBasedOnValue(Node **list, int base)
 
     else // target node is embedded between node A and B where A != head
     {
-        previousNode->next = currentNode->next; // remove references to node from list
+        previousNode->next = currentNode->next; // remove references to node from List
         free(currentNode->r);
         free(currentNode);
         return 1;
@@ -185,8 +185,8 @@ int removeNodeBasedOnValue(Node **list, int base)
 */
 void printReverseList(Node *list)
 {
-    // recursive solution to printing list backwards
-    if (list == NULL) // reached the end of the list
+    // recursive solution to printing List backwards
+    if (list == NULL) // reached the end of the List
     {
         return;
     }

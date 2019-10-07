@@ -68,7 +68,7 @@ void printList(Node* head){
 // Please do not change the code above -- points will be deducted if you do.
 
 int insertNodeBasedOnIndex(Node** head, int index){ // inserts a node in the passed index place
-    if (head == NULL){ // checks if reached end of list
+    if (head == NULL){ // checks if reached end of List
         return -1;
     }
     Node* node = malloc(sizeof(Node));
