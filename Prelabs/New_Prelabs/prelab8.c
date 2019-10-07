@@ -31,13 +31,9 @@ int main(void){
 
     List *dummyListPtr = initIntegerList();
     k = rand() % 10;
-    insertAtHead(3, dummyListPtr);
-    insertAtHead(2, dummyListPtr);
-    insertAtHead(1, dummyListPtr);
+    insertAtHead(k, dummyListPtr);
     k = rand() % 10;
-    insertAtTail(4, dummyListPtr);
-    insertAtTail(5, dummyListPtr);
-    insertAtTail(6, dummyListPtr);
+    insertAtTail(k, dummyListPtr);
     printList(dummyListPtr);
     freeList(dummyListPtr);
     return 0;
