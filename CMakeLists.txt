@@ -45,5 +45,5 @@ add_executable(lab6a.c In-ClassLabs/New_Labs/lab6a.c)
 add_executable(pointerExample.c Side-projects/pointerExample.c)
 add_executable(pointer_practice.c Side-projects/pointer_practice.c)
 add_executable(prelab8.c Prelabs/New_Prelabs/prelab8.c)
-add_executable(prelab8a.c Prelabs/New_Prelabs/prelab8a.c)
+add_executable(lab8.c In-ClassLabs/New_Labs/lab8.c)
 
