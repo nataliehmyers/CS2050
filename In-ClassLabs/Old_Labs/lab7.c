@@ -97,7 +97,7 @@ int removeNodeBasedOnValue(Node** head, int value){ // removes a node based on a
     int found = 0;
     if(head != NULL && (*head)->r->height == value) { // if the first node is what we're looking for
         // first, check if there's a next node
-        if((*head)->next != NULL) {// if there is, assign the value to next then free head
+        if((*head)->next != NULL) {// if there is, assign the value to next then free headPtr
             Node* next = (*head)->next;
             free(head);
             return 0;
@@ -132,7 +132,7 @@ void printReverseList(Node* head){ // reverses List and calls print function
         exit;
     prev = cur;
     cur = cur->next;
-    prev->next = NULL;//the head now is the new tail
+    prev->next = NULL;//the headPtr now is the new tailPtr
     Node* next = cur->next;
     cur->next = prev;//now the first two nodes are reversed
     while (next != NULL) { // conditional for reaching end of List

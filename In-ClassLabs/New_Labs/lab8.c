@@ -53,7 +53,7 @@ int main(void) {
 }
 
 Node* initIntegerList(){
-    /* Function created a linked lists with dummy nodes by allocating memory for the head and tail, error checking,
+    /* Function created a linked lists with dummy nodes by allocating memory for the headPtr and tailPtr, error checking,
      * then assigning them into a list. Function recieves NULL and returns the empty dummy list.  */
     Node* head = malloc(sizeof(Node));
     if(head == NULL){

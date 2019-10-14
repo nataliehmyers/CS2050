@@ -106,14 +106,14 @@ int insertNodeBasedOnIndex(Node **list, int index)
         return -1; // always have to insert at 0 for an empty List
     }
 
-    if (index == 0) // inserting at the head of the List
+    if (index == 0) // inserting at the headPtr of the List
     {
         node->next = *list;
         *list = node;
         return 1;
     }
 
-    else // not inserting at the head of the List
+    else // not inserting at the headPtr of the List
     {
         Node *currentNode = *list;
 
@@ -147,7 +147,7 @@ int removeNodeBasedOnValue(Node **list, int base)
         return -1;
     }
 
-    Node *currentNode = *list; // start at head of List
+    Node *currentNode = *list; // start at headPtr of List
     Node *previousNode = NULL;
 
     while (currentNode != NULL && currentNode->r->base != base)
@@ -161,16 +161,16 @@ int removeNodeBasedOnValue(Node **list, int base)
         return -1;
     }
 
-    if (previousNode == NULL) // node we are removing is the head of the List
+    if (previousNode == NULL) // node we are removing is the headPtr of the List
     {
         Node *nextNode = currentNode->next;
-        *list = nextNode; // set the new head of the List as the node following the current head
+        *list = nextNode; // set the new headPtr of the List as the node following the current headPtr
         free(currentNode->r);
         free(currentNode);
         return 1;
     }
 
-    else // target node is embedded between node A and B where A != head
+    else // target node is embedded between node A and B where A != headPtr
     {
         previousNode->next = currentNode->next; // remove references to node from List
         free(currentNode->r);

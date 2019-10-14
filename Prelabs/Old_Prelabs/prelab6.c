@@ -90,8 +90,8 @@ List* insertInOrder(List* head, int value) {
 
     if(head == NULL)
         return insert;
-    if(head->key > value){//if the head is greater than what we're inserting
-        insert->next = head; //make the new node connect to the head then return the new node
+    if(head->key > value){//if the headPtr is greater than what we're inserting
+        insert->next = head; //make the new node connect to the headPtr then return the new node
         return insert;
     }
     List* cur = head;
@@ -116,7 +116,7 @@ List* removeKey(List* head, int value) {
     int found = 0;
     if(head != NULL && head->key == value) { // if the first node is what we're looking for
         // first, check if there's a next node
-        if(head->next != NULL) {// if there is, assign the value to next then free head
+        if(head->next != NULL) {// if there is, assign the value to next then free headPtr
             List* next = head->next;
             free(head);
             return next;
@@ -146,10 +146,10 @@ List* removeKey(List* head, int value) {
     free(cur);
 //    found = 1;
     // handle
-    //    ToDo: Add in conditionals for head and tail removal
+    //    ToDo: Add in conditionals for headPtr and tailPtr removal
     if (found == 0) {
         printf("Key not found in List. Nothing removed.\n");
-        //        printList(head);
+        //        printList(headPtr);
     }
 // ToDo: Add message for remove int not in List.
 // ToDo: Remove all instances of int if it appears more than once.
@@ -193,7 +193,7 @@ List* reverseList(List* head) {
 
     prev = cur;
     cur = cur->next;
-    prev->next = NULL;//the head now is the new tail
+    prev->next = NULL;//the headPtr now is the new tailPtr
     List* next = cur->next;
     cur->next = prev;//now the first two nodes are reversed
     while (next != NULL) {

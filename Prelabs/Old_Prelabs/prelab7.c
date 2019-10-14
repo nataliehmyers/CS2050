@@ -31,8 +31,8 @@ int insertInOrder(List** ptr) {
 
     if(*ptr == NULL)
         return 1;
-    if(head->key > value){//if the head is greater than what we're inserting
-        insert->next = head; //make the new node connect to the head then return the new node
+    if(head->key > value){//if the headPtr is greater than what we're inserting
+        insert->next = head; //make the new node connect to the headPtr then return the new node
         return insert;
     }
     List* cur = head;
@@ -76,7 +76,7 @@ int removeKey(List** ptr) {
     int found = 0;
     if(head != NULL && head->key == value) { // if the first node is what we're looking for
         // first, check if there's a next node
-        if(head->next != NULL) {// if there is, assign the value to next then free head
+        if(head->next != NULL) {// if there is, assign the value to next then free headPtr
             List* next = head->next;
             free(head);
             return next;
@@ -101,7 +101,7 @@ int removeKey(List** ptr) {
     free(cur);
     if (found == 0) {
         printf("Key not found in List. Nothing removed.\n");
-        //        printList(head);
+        //        printList(headPtr);
     }
     return head;
 }
