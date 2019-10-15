@@ -81,8 +81,11 @@ int main(void){
     printHead(listPtr);
     size = getListSize(listPtr);
     printf("getListSize: %d\n", size);
+    moveHeadToTail(listPtr);
+    printList(listPtr);
     freeList(listPtr);
-     */
+    */
+
 
     List* listPtr = initIntegerListNoDummy();
     insertAtHeadNoDummy(5, listPtr);
@@ -115,6 +118,8 @@ int main(void){
     size = getListSizeNoDummy(listPtr);
     printf("\nsize: %d\n", size);
     printHeadNoDummy(listPtr);
+    moveHeadToTailNoDummy(listPtr);
+    printListNoDummy(listPtr);
     freeListNoDummy(listPtr);
 
 
@@ -179,6 +184,15 @@ int getListSize(List *listPtr){
 
 void printHead(List *listPtr){
     printf("Head: %d\n", listPtr->headPtr->next->key);
+}
+
+void moveHeadToTail(List *listPtr){
+    int initHeadKey = listPtr->headPtr->next->key;
+    int initTailKey = listPtr->tailPtr->key;
+    listPtr->headPtr->next->key = initTailKey;
+    int newHeadKey = listPtr->headPtr->next->key;
+    listPtr->tailPtr->key = initHeadKey;
+    int newTailKey = listPtr->tailPtr->key;
 }
 
 void printList(List *listPtr){
@@ -269,6 +283,15 @@ void printHeadNoDummy(List *listPtr){
     printf("Head: %d\n", listPtr->headPtr->key);
 }
 
+void moveHeadToTailNoDummy(List *listPtr){
+    int initHeadKey = listPtr->headPtr->key;
+    int initTailKey = listPtr->tailPtr->key;
+    listPtr->headPtr->key = initTailKey;
+    listPtr->tailPtr->key = initHeadKey;
+    int newHeadKey = listPtr->headPtr->key;
+    int newTailKey = listPtr->tailPtr->key;
+}
+
 void printListNoDummy(List* listPtr){
     Node* currentPtr = listPtr->headPtr;
     if(currentPtr == NULL){
@@ -278,6 +301,7 @@ void printListNoDummy(List* listPtr){
         printf("%d ", currentPtr->key);
         currentPtr = currentPtr->next;
     }
+    printf("\n");
 }
 
 void freeListNoDummy(List *listPtr){
