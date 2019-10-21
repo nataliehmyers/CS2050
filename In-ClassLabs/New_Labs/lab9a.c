@@ -100,6 +100,7 @@ int removeTail(List* listPtr){
         free(listPtr->head);
         listPtr->size--;
         listPtr->head = NULL;
+        listPtr->tail = NULL;
         return key;
     }
     Node* currentPtr = listPtr->head;
@@ -109,6 +110,7 @@ int removeTail(List* listPtr){
     Node *removeNode = currentPtr->next;
     int key = removeNode->item;
     currentPtr->next = NULL;
+    listPtr->tail = currentPtr;
     listPtr->size--;
     free(removeNode);
     return key;

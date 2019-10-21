@@ -48,3 +48,6 @@ add_executable(prelab8.c Prelabs/New_Prelabs/prelab8.c)
 add_executable(lab8.c In-ClassLabs/New_Labs/lab8.c)
 add_executable(prelab9.c Prelabs/New_Prelabs/prelab9.c)
 add_executable(lab9a.c In-ClassLabs/New_Labs/lab9a.c)
+add_executable(prelab10circular.c Prelabs/New_Prelabs/prelab10circular.c)
+add_executable(prelab10double.c Prelabs/New_Prelabs/prelab10double.c)
+
