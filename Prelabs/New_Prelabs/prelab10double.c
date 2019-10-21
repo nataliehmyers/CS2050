@@ -20,6 +20,7 @@ int dequeue(Queue *, int *);
 int getQsize(Queue *);
 void printQueue(Queue*); // required to test functions
 void freeQueue(Queue *);
+void verify(Queue *);
 
 int main(void){
     srand(time(NULL));
@@ -62,18 +63,27 @@ int enqueue(int k, Queue* queuePtr){
         return -1;
     }
     newNode->key = k;
-    queuePtr->size++;
-    if(queuePtr->headPtr == NULL){
+    if(getQsize(queuePtr) == 0){
         queuePtr->headPtr = newNode;
         queuePtr->tailPtr = newNode;
         newNode->next = newNode;
         newNode->prev = newNode;
-    } else {
-        newNode->next = queuePtr->headPtr;
+    }
+    else if(getQsize(queuePtr) == 1) {
+        newNode->next = queuePtr->tailPtr;
+        newNode->prev = queuePtr->tailPtr;
         queuePtr->headPtr = newNode;
         queuePtr->tailPtr->next = newNode;
-        newNode->prev = queuePtr->tailPtr;
+        queuePtr->tailPtr->prev = newNode;
     }
+    else if(getQsize(queuePtr) > 1) {
+        newNode->next = queuePtr->headPtr;
+        newNode->prev = queuePtr->tailPtr;
+        queuePtr->tailPtr->next = newNode;
+        queuePtr->headPtr->prev = newNode;
+        queuePtr->headPtr = newNode;
+    }
+    queuePtr->size++;
     return 0;
 }
 
@@ -90,14 +100,11 @@ int dequeue(Queue* queuePtr, int* keyPtr){
         *keyPtr = key;
         return 0;
     }
-    Node* currentPtr = queuePtr->headPtr;
-    while(currentPtr->next->next != queuePtr->headPtr){
-        currentPtr = currentPtr->next;
-    }
-    Node *removeNode = currentPtr->next;
+    Node* secondToLastNode = queuePtr->tailPtr->prev;
+    Node *removeNode = queuePtr->tailPtr;
     int key = removeNode->key;
-    currentPtr->next = queuePtr->headPtr;
-    queuePtr->tailPtr = currentPtr;
+    secondToLastNode->next = queuePtr->headPtr;
+    queuePtr->tailPtr = secondToLastNode;
     queuePtr->headPtr->prev = queuePtr->tailPtr;
     queuePtr->size--;
     *keyPtr = key;
@@ -130,4 +137,72 @@ void freeQueue(Queue* queuePtr){
     free(queuePtr);
     queuePtr = NULL;
     printf("Queue has been freed.\n");
+}
+
+void verify(Queue* queue) {
+    if (queue->size == 0) {
+        if (queue->headPtr != NULL) {
+            printf("size=0 head should be null");
+            exit(1);
+        }
+        if (queue->tailPtr != NULL) {
+            printf("size=0 tail should be null");
+            exit(1);
+        }
+    }
+
+    else if (queue->size == 1) {
+        if (queue->headPtr->next != queue->tailPtr) {
+            printf("size=1 head->next should be tail");
+            exit(1);
+        }
+        if (queue->tailPtr->next != queue->headPtr) {
+            printf("size=1 tail->next should be head");
+            exit(1);
+        }
+        if (queue->headPtr->prev != queue->tailPtr) {
+            printf("size=1 head->prev should be tail");
+            exit(1);
+        }
+        if (queue->tailPtr->prev != queue->headPtr) {
+            printf("size=1 tail->prev should be tail");
+            exit(1);
+        }
+    }
+
+    else if (queue->size > 1) {
+        if (queue->headPtr->prev != queue->tailPtr) {
+            printf("size=1+ head->prev should be tail");
+            exit(1);
+        }
+        if (queue->tailPtr->next != queue->headPtr) {
+            printf("size=1+ tail->next should be head");
+            exit(1);
+        }
+
+        {
+            Node* n = queue->headPtr;
+            int moved = 0;
+            while (n != queue->tailPtr) {
+                n = n->next;
+                moved++;
+                if (moved > queue->size) {
+                    printf("size=1+ should have found tail by now");
+                    exit(1);
+                };
+            }
+        }
+        {
+            Node* n = queue->tailPtr;
+            int moved = 0;
+            while (n != queue->headPtr) {
+                n = n->prev;
+                moved++;
+                if (moved > queue->size) {
+                    printf("size=1+ should have found head by now");
+                    exit(1);
+                };
+            }
+        }
+    }
 }
