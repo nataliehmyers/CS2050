@@ -29,7 +29,26 @@ int main(void){
 
 Queue * initQueue(void){
     Queue* queuePtr = malloc(sizeof(Queue));
-    listPtr->headPtr = NULL;
-    listPtr->tailPtr = NULL;
-    listPtr->size = 0;
+    queuePtr->headPtr = NULL;
+    queuePtr->tailPtr = NULL;
+    queuePtr->size = 0;
+    return queuePtr;
+}
+
+int enqueue(int k, Queue *queuePtr){
+    Node* newNode = malloc(sizeof(Node));
+    if(newNode == NULL){
+        return -1;
+    }
+    newNode->key = k;
+    queuePtr->size++;
+    if(queuePtr->headPtr == NULL){
+        queuePtr->headPtr = newNode;
+        newNode->next = NULL;
+        queuePtr->tailPtr = newNode;
+    } else {
+        newNode->next = queuePtr->headPtr;
+        queuePtr->headPtr = newNode;
+    }
+    return 0;
 }

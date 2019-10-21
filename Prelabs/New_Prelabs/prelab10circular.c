@@ -64,11 +64,12 @@ int enqueue(int k, Queue* queuePtr){
     queuePtr->size++;
     if(queuePtr->headPtr == NULL){
         queuePtr->headPtr = newNode;
-        newNode->next = NULL;
         queuePtr->tailPtr = newNode;
+        newNode->next = newNode;
     } else {
         newNode->next = queuePtr->headPtr;
         queuePtr->headPtr = newNode;
+        queuePtr->tailPtr->next = newNode;
     }
     return 0;
 }
@@ -77,21 +78,23 @@ int dequeue(Queue* queuePtr, int* keyPtr){
     if(queuePtr->headPtr == NULL){
         return -1;
     }
-    if(queuePtr->headPtr->next == NULL){
+    if(getQsize(queuePtr) == 1){
         int key = queuePtr->headPtr->key;
         free(queuePtr->headPtr);
         queuePtr->size--;
         queuePtr->headPtr = NULL;
+        queuePtr->tailPtr = NULL;
         *keyPtr = key;
         return 0;
     }
     Node* currentPtr = queuePtr->headPtr;
-    while(currentPtr->next->next != NULL){
+    while(currentPtr->next->next != queuePtr->headPtr){
         currentPtr = currentPtr->next;
     }
     Node *removeNode = currentPtr->next;
     int key = removeNode->key;
-    currentPtr->next = NULL;
+    currentPtr->next = queuePtr->headPtr;
+    queuePtr->tailPtr = currentPtr;
     queuePtr->size--;
     *keyPtr = key;
     free(removeNode);
@@ -107,10 +110,11 @@ void printQueue(Queue* queuePtr){
     if(currentPtr == NULL){
         return;
     }
-    while(currentPtr != NULL){
+    while(currentPtr->next != queuePtr->headPtr){
         printf("%d ", currentPtr->key);
         currentPtr = currentPtr->next;
     }
+    printf("%d ", queuePtr->tailPtr->key);
     printf("\n");
 }
 
