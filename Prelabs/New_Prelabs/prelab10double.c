@@ -57,57 +57,105 @@ Queue* initQueue(){
     return queuePtr;
 }
 
+//int enqueue(int k, Queue* queuePtr){
+//    Node* newNode = malloc(sizeof(Node));
+//    if(newNode == NULL){
+//        return -1;
+//    }
+//    newNode->key = k;
+//    if(getQsize(queuePtr) == 0){
+//        queuePtr->headPtr = newNode;
+//        queuePtr->tailPtr = newNode;
+//        newNode->next = newNode;
+//        newNode->prev = newNode;
+//    }
+//    else if(getQsize(queuePtr) == 1) {
+//        newNode->next = queuePtr->tailPtr;
+//        newNode->prev = queuePtr->tailPtr;
+//        queuePtr->headPtr = newNode;
+//        queuePtr->tailPtr->next = newNode;
+//        queuePtr->tailPtr->prev = newNode;
+//    }
+//    else if(getQsize(queuePtr) > 1) {
+//        newNode->next = queuePtr->headPtr;
+//        newNode->prev = queuePtr->tailPtr;
+//        queuePtr->tailPtr->next = newNode;
+//        queuePtr->headPtr->prev = newNode;
+//        queuePtr->headPtr = newNode;
+//    }
+//    queuePtr->size++;
+//    return 0;
+//}
+
 int enqueue(int k, Queue* queuePtr){
     Node* newNode = malloc(sizeof(Node));
     if(newNode == NULL){
         return -1;
     }
     newNode->key = k;
-    if(getQsize(queuePtr) == 0){
+    queuePtr->size++;
+    if(queuePtr->headPtr == NULL){
         queuePtr->headPtr = newNode;
         queuePtr->tailPtr = newNode;
         newNode->next = newNode;
         newNode->prev = newNode;
-    }
-    else if(getQsize(queuePtr) == 1) {
-        newNode->next = queuePtr->tailPtr;
-        newNode->prev = queuePtr->tailPtr;
-        queuePtr->headPtr = newNode;
-        queuePtr->tailPtr->next = newNode;
-        queuePtr->tailPtr->prev = newNode;
-    }
-    else if(getQsize(queuePtr) > 1) {
+    } else {
         newNode->next = queuePtr->headPtr;
         newNode->prev = queuePtr->tailPtr;
         queuePtr->tailPtr->next = newNode;
-        queuePtr->headPtr->prev = newNode;
-        queuePtr->headPtr = newNode;
+        queuePtr->tailPtr = newNode;
     }
-    queuePtr->size++;
+    newNode->prev->next = newNode;
+    newNode->next->prev = newNode;
     return 0;
 }
+
+//int dequeue(Queue* queuePtr, int* keyPtr){
+//    if(queuePtr->headPtr == NULL){
+//        return -1;
+//    }
+//    if(getQsize(queuePtr) == 1){
+//        int key = queuePtr->headPtr->key;
+//        free(queuePtr->headPtr);
+//        queuePtr->size--;
+//        queuePtr->headPtr = NULL;
+//        queuePtr->tailPtr = NULL;
+//        *keyPtr = key;
+//        return 0;
+//    }
+//    Node* secondToLastNode = queuePtr->tailPtr->prev;
+//    Node *removeNode = queuePtr->tailPtr;
+//    int key = removeNode->key;
+//    secondToLastNode->next = queuePtr->headPtr;
+//    queuePtr->tailPtr = secondToLastNode;
+//    queuePtr->headPtr->prev = queuePtr->tailPtr;
+//    queuePtr->size--;
+//    *keyPtr = key;
+//    free(removeNode);
+//    return 0;
+//}
 
 int dequeue(Queue* queuePtr, int* keyPtr){
     if(queuePtr->headPtr == NULL){
         return -1;
     }
+    if(keyPtr == NULL){
+        return -2;
+    }
     if(getQsize(queuePtr) == 1){
-        int key = queuePtr->headPtr->key;
+        *keyPtr = queuePtr->headPtr->key;
         free(queuePtr->headPtr);
         queuePtr->size--;
         queuePtr->headPtr = NULL;
         queuePtr->tailPtr = NULL;
-        *keyPtr = key;
         return 0;
     }
-    Node* secondToLastNode = queuePtr->tailPtr->prev;
-    Node *removeNode = queuePtr->tailPtr;
-    int key = removeNode->key;
-    secondToLastNode->next = queuePtr->headPtr;
-    queuePtr->tailPtr = secondToLastNode;
-    queuePtr->headPtr->prev = queuePtr->tailPtr;
+    Node *removeNode = queuePtr->headPtr;
+    *keyPtr = removeNode->key;
+    queuePtr->headPtr = removeNode->next;
+    queuePtr->tailPtr->next = removeNode->next;
+    removeNode->next->prev = queuePtr->tailPtr;
     queuePtr->size--;
-    *keyPtr = key;
     free(removeNode);
     return 0;
 }
