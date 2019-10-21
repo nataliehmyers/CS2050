@@ -48,11 +48,11 @@ int main(void){
 }
 
 Queue* initQueue(){
-    Queue* listPtr = malloc(sizeof(Queue));
-    listPtr->headPtr = NULL;
-    listPtr->tailPtr = NULL;
-    listPtr->size = 0;
-    return listPtr;
+    Queue* queuePtr = malloc(sizeof(Queue));
+    queuePtr->headPtr = NULL;
+    queuePtr->tailPtr = NULL;
+    queuePtr->size = 0;
+    return queuePtr;
 }
 
 int enqueue(int k, Queue* queuePtr){
