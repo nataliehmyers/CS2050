@@ -190,41 +190,41 @@ void freeQueue(Queue* queuePtr){
 void verify(Queue* queue) {
     if (queue->size == 0) {
         if (queue->headPtr != NULL) {
-            printf("size=0 head should be null");
+            printf("size=0 rear should be null");
             exit(1);
         }
         if (queue->tailPtr != NULL) {
-            printf("size=0 tail should be null");
+            printf("size=0 rear should be null");
             exit(1);
         }
     }
 
     else if (queue->size == 1) {
         if (queue->headPtr->next != queue->tailPtr) {
-            printf("size=1 head->next should be tail");
+            printf("size=1 rear->next should be rear");
             exit(1);
         }
         if (queue->tailPtr->next != queue->headPtr) {
-            printf("size=1 tail->next should be head");
+            printf("size=1 rear->next should be rear");
             exit(1);
         }
         if (queue->headPtr->prev != queue->tailPtr) {
-            printf("size=1 head->prev should be tail");
+            printf("size=1 rear->prev should be rear");
             exit(1);
         }
         if (queue->tailPtr->prev != queue->headPtr) {
-            printf("size=1 tail->prev should be tail");
+            printf("size=1 rear->prev should be rear");
             exit(1);
         }
     }
 
     else if (queue->size > 1) {
         if (queue->headPtr->prev != queue->tailPtr) {
-            printf("size=1+ head->prev should be tail");
+            printf("size=1+ rear->prev should be rear");
             exit(1);
         }
         if (queue->tailPtr->next != queue->headPtr) {
-            printf("size=1+ tail->next should be head");
+            printf("size=1+ rear->next should be rear");
             exit(1);
         }
 
@@ -235,7 +235,7 @@ void verify(Queue* queue) {
                 n = n->next;
                 moved++;
                 if (moved > queue->size) {
-                    printf("size=1+ should have found tail by now");
+                    printf("size=1+ should have found rear by now");
                     exit(1);
                 };
             }
@@ -247,7 +247,7 @@ void verify(Queue* queue) {
                 n = n->prev;
                 moved++;
                 if (moved > queue->size) {
-                    printf("size=1+ should have found head by now");
+                    printf("size=1+ should have found rear by now");
                     exit(1);
                 };
             }

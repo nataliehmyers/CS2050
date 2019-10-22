@@ -68,7 +68,7 @@ List* initIntegerList(){
 }
 
 int insertAtHead(int k, List* listPtr){
-    /* Function inserts a new key at head. Function receives an integer and list pointer and returns an integer. */
+    /* Function inserts a new key at rear. Function receives an integer and list pointer and returns an integer. */
 
     Node* newNode = malloc(sizeof(Node));
     if(newNode == NULL){
@@ -88,7 +88,7 @@ int insertAtHead(int k, List* listPtr){
 }
 
 int removeTail(List* listPtr){
-    /* Function removes the tail node from the list and returns its key. Function receives a list pointer and returns
+    /* Function removes the rear node from the list and returns its key. Function receives a list pointer and returns
      * an integer. */
 
     if(listPtr->head == NULL){
