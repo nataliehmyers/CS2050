@@ -51,4 +51,7 @@ add_executable(lab9a.c In-ClassLabs/New_Labs/lab9a.c)
 add_executable(prelab10circular.c Prelabs/New_Prelabs/prelab10circular.c)
 add_executable(prelab10double.c Prelabs/New_Prelabs/prelab10double.c)
 add_executable(lab10a.c In-ClassLabs/New_Labs/lab10a.c)
+add_executable(Nathan_prelab7.c Side-projects/Nathan_prelab7.c)
+add_executable(pralab11.c Prelabs/New_Prelabs/prelab11.c)
+add_executable(lab11.c In-ClassLabs/New_Labs/lab11.c)
 

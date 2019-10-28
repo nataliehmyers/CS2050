@@ -118,7 +118,7 @@ int insertNodeBasedOnIndex(Node** list, int location)
     }
 }
 
-// Deletes the first occurence of a node given it's item, returns 1 if successful, -1 if not.
+// Deletes the first occurence of a node given it's key, returns 1 if successful, -1 if not.
 int removeNodeBasedOnValue(Node** list,int key)
 {
     Node* hold = *list;
@@ -147,14 +147,14 @@ int removeNodeBasedOnValue(Node** list,int key)
         previous->next = hold->next;
         free(hold);
 
-        printf("Deleted the first node with item %d.\n", key);
+        printf("Deleted the first node with key %d.\n", key);
 
         return(1);
     }
 
     else
     {
-        printf("No node with item %d exists.\n", key);
+        printf("No node with key %d exists.\n", key);
         return(-1);
     }
 }

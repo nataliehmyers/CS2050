@@ -3,7 +3,7 @@
 #include <time.h>
 
 typedef struct nodestruct {
-    int item;
+    int key;
     struct nodestruct *next;
 } Node;
 
@@ -74,7 +74,7 @@ int insertAtHead(int k, List* listPtr){
     if(newNode == NULL){
         return -1;
     }
-    newNode->item = k;
+    newNode->key = k;
     listPtr->size++;
     if(listPtr->head == NULL){
         listPtr->head = newNode;
@@ -96,7 +96,7 @@ int removeTail(List* listPtr){
         return 0;
     }
     if(listPtr->head->next == NULL){
-        int key = listPtr->head->item;
+        int key = listPtr->head->key;
         free(listPtr->head);
         listPtr->size--;
         listPtr->head = NULL;
@@ -108,7 +108,7 @@ int removeTail(List* listPtr){
         currentPtr = currentPtr->next;
     }
     Node *removeNode = currentPtr->next;
-    int key = removeNode->item;
+    int key = removeNode->key;
     currentPtr->next = NULL;
     listPtr->tail = currentPtr;
     listPtr->size--;
@@ -135,7 +135,7 @@ void printList(List* listPtr){
         return;
     }
     while(currentPtr != NULL){
-        printf("%d ", currentPtr->item);
+        printf("%d ", currentPtr->key);
         currentPtr = currentPtr->next;
     }
     printf("\n");

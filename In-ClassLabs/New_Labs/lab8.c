@@ -3,7 +3,7 @@
 #include <time.h>
 
 typedef struct nodestruct {
-    int item;
+    int key;
     struct nodestruct *next;
 } Node;
 
@@ -80,9 +80,9 @@ int insertAscend(Node* listPtr,int k) {
         return -1;
     }
     Node *currentNode = listPtr;
-    newNode->item = k;
+    newNode->key = k;
     while(currentNode->next->next != NULL){
-        if(k <= currentNode->next->item){
+        if(k <= currentNode->next->key){
             break;
         }
         currentNode = currentNode->next;
@@ -101,7 +101,7 @@ int insertAtTail(Node *listPtr, int k){
         printf("Malloc failed.");
         return -1;
     }
-    newNode->item = k;
+    newNode->key = k;
     while(listPtr->next->next != NULL){
         listPtr = listPtr->next;
     }
@@ -115,7 +115,7 @@ int computeEven(Node* listPtr){
      * and returns an integer for the number of evens in the list. */
     int count = 0;
     while(listPtr->next->next != NULL){
-        if(((listPtr->next->item) % 2) == 0){
+        if(((listPtr->next->key) % 2) == 0){
             count++;
         }
         listPtr = listPtr->next;
@@ -130,7 +130,7 @@ void printList(Node *listPtr){
     }
     listPtr = listPtr->next;
     while(listPtr->next != NULL){
-        printf("%d ", listPtr->item);
+        printf("%d ", listPtr->key);
         listPtr = listPtr->next;
     }
     printf("\n");

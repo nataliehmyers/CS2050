@@ -1,23 +1,22 @@
 #include <stdio.h>
-#include <math.h>
-
-double MyPower(double, int);
+#include <stdlib.h>
 
 int main(void){
-    double base;
-    int exponent;
-    printf("Gimme two numbers: ");
-    scanf("%lf %d", &base, &exponent);
-    double result  = MyPower(base, exponent);
-    printf("Result: %lf", result);
-    return 0;
-}
+    char string1[6] = {'h', 'e', 'l', 'l', 'o', '\0'};
+    char replace[4] = {'e', 'l', 'l', '\0'};
+    char new[4] = {'a', 'l', 'l', '\0'};
+    printf("Original: %s\n", string1);
+    printf("Replace this: %s\n", replace);
+    printf("With this: %s\n", new);
 
-double MyPower(double base, int exponent){
-    double total = 1;
-    while(exponent != 0){
-        total *= base;
-        --exponent;
+    for(int i = 0; i < 5; i++){
+        for(int j = 0; j < 3; j++) {
+            if (*(string1 + i) == *(replace + j)) {
+                *(string1+i) = *(new+j);
+            }
+        }
     }
-    return total;
+    printf("Final string: %s", string1);
+
+    return 0;
 }

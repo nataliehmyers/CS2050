@@ -3,7 +3,7 @@
 #include <time.h>
 
 typedef struct nodestruct {
-    int item;
+    int key;
     struct nodestruct *next;
 } Node;
 
@@ -22,7 +22,7 @@ void printQueue(Queue*); // to test functions
 int main(void){
     /* Function tests other functions. */
 
-
+    /*
     srand(time(NULL));
     Queue* queue = initQueue();
     int k = (rand() % 10) + 1;
@@ -33,19 +33,20 @@ int main(void){
     }
     printf("Sum: %d\n", getSum(queue));
     int removedItem = 0;
-    int* item = &removedItem;
-    dequeue(queue, item);
+    int* key = &removedItem;
+    dequeue(queue, key);
     printQueue(queue);
-    dequeue(queue, item);
+    dequeue(queue, key);
     printQueue(queue);
-    dequeue(queue, item);
+    dequeue(queue, key);
     printQueue(queue);
-    dequeue(queue, item);
+    dequeue(queue, key);
     printQueue(queue);
-    dequeue(queue, item);
+    dequeue(queue, key);
     printQueue(queue);
     printf("Sum: %d\n", getSum(queue));
     freeQueue(queue);
+    */
     return 0;
 }
 
@@ -68,7 +69,7 @@ int enqueue(int k, Queue* queue){
     if(newNode == NULL){
         return -1;
     }
-    newNode->item = k;
+    newNode->key = k;
     queue->sum = queue->sum + k;
     queue->size++;
     if(queue->rear == NULL){
@@ -83,7 +84,7 @@ int enqueue(int k, Queue* queue){
 }
 
 int dequeue(Queue* queue, int* item){
-    /* Funtion removes a node from the queue, returns the key value in the removed node by integer pointer, and returns
+    /* Function removes a node from the queue, returns the key value in the removed node by integer pointer, and returns
      * an error code. Function receives a queue pointer and integer pointer and returns an integer. */
     if(queue->rear == NULL){
         return -1;
@@ -92,7 +93,7 @@ int dequeue(Queue* queue, int* item){
         return -2;
     }
     if(queue->size == 1){
-        *item = queue->rear->next->item;
+        *item = queue->rear->next->key;
         free(queue->rear->next);
         queue->size--;
         queue->sum = queue->sum - *item;
@@ -100,7 +101,7 @@ int dequeue(Queue* queue, int* item){
         return 0;
     }
     Node *removeNode = queue->rear->next;
-    *item = removeNode->item;
+    *item = removeNode->key;
     queue->rear->next = removeNode->next;
     queue->rear->next = removeNode->next;
     queue->sum = queue->sum - *item;
@@ -127,15 +128,15 @@ void freeQueue(Queue* queue){
 
 void printQueue(Queue* queue){
     /* Function prints all nodes in a queue. Function receives a queue pointer and returns void. Function added for
-     * convenience and testing function in development. */
+     * convenience and testing functions in development. */
     if(queue->rear == NULL){
         return;
     }
     Node* currentPtr = queue->rear->next;
     while(currentPtr->next != queue->rear->next){
-        printf("%d ", currentPtr->item);
+        printf("%d ", currentPtr->key);
         currentPtr = currentPtr->next;
     }
-    printf("%d ", queue->rear->item);
+    printf("%d ", queue->rear->key);
     printf("\n");
 }
