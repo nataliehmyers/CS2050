@@ -23,7 +23,7 @@ int main(void){
 }
 
 PQueue* initPQ(){
-    /* Function creates an empty queue and return it. Function receives no input and returns a pointer */
+    /* Function creates an empty queue and return it. Function receives no input and returns a pointer. O(1) complexity. */
 
     PQueue* queue = malloc(sizeof(PQueue));
     if(queue == NULL){
@@ -38,7 +38,7 @@ PQueue* initPQ(){
 int insertPQ(int key, float priority, PQueue* queue){
     /* Function inserts an integer key value, a float priority value, and the current priority queue pointer.
      * Function creates a new node with the key and priority values, inserts it into the priority queue
-     * in ascending priority value, then returns an error code. */
+     * in ascending priority value, then returns an error code. O(n) complexity. */
 
     Node* newNode = malloc(sizeof(Node));
     if(newNode == NULL){
@@ -71,7 +71,7 @@ int insertPQ(int key, float priority, PQueue* queue){
 int deleteMinPQ(PQueue* queue, int* key){
     /* Function receives the current priority queue and an integer pointer as inputs. Function removes the node
      * with the minimum priority value and stores the removed key value into the integer pointer. Function
-     * returns an integer error code. */
+     * returns an integer error code. O(1) complexity. */
 
     if(queue->rear == NULL){
         return -1;
@@ -97,7 +97,7 @@ int deleteMinPQ(PQueue* queue, int* key){
 
 void reInitPQ(PQueue* queue){
     /* Function receives the current priority queue, reinitializes the priority queue to an empty priority queue
-     * without changing the address of the priority queue. */
+     * without changing the address of the priority queue. O(n) complexity. */
 
     while(queue->size > 0){
         int poppedValue = 0;
@@ -107,7 +107,7 @@ void reInitPQ(PQueue* queue){
 
 void printPQ(PQueue* queue){
     /* Function receives the current priority queue and prints out the key values of each node with their priority
-     * values. */
+     * values. O(n) complexity. */
 
     if (queue == NULL){
         return;
@@ -125,7 +125,7 @@ void printPQ(PQueue* queue){
 }
 
 void freePQ(PQueue* queue){
-    /* Function receives the current priority queue and frees all the memory that has been previously allocated. */
+    /* Function receives the current priority queue and frees all the memory that has been previously allocated. O(n) complexity. */
 
     reInitPQ(queue);
     free(queue);
