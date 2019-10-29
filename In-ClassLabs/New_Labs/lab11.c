@@ -20,26 +20,27 @@ void printPQ(PQueue*);
 
 int main(void){
     PQueue* queue = initPQ();
-    insertPQ(1, 99, queue);
-    printPQ(queue);
-    insertPQ(2, 0, queue);
-    printPQ(queue);
+    insertPQ(1, 0, queue);
+    insertPQ(2, 99, queue);
     insertPQ(3, 50, queue);
     printPQ(queue);
+    printf("\n");
 
     int removedItem = 0;
     int* key = &removedItem;
     deleteMinPQ(queue, key);
     printPQ(queue);
+    printf("\n");
     deleteMinPQ(queue, key);
     printPQ(queue);
-    deleteMinPQ(queue, key);
-    printPQ(queue);
+
+    freePQ(queue);
 
     return 0;
 }
 
 PQueue* initPQ(){
+
     PQueue* queue = malloc(sizeof(PQueue));
     if(queue == NULL){
         return NULL;
@@ -60,9 +61,11 @@ int insertPQ(int key, float priority, PQueue* queue){
     queue->size++;
     if(queue->rear == NULL){
         queue->rear = newNode;
+        queue->front = newNode;
         newNode->next = newNode;
     } else if (priority > queue->rear->priority) {
         newNode->next = queue->rear->next;
+        queue->front = queue->rear->next;
         queue->rear->next = newNode;
         queue->rear = newNode;
     } else {
@@ -70,6 +73,7 @@ int insertPQ(int key, float priority, PQueue* queue){
         while (priority > currentNode->next->priority) {
             currentNode = currentNode->next;
         }
+        queue->front = queue->rear->next;
         newNode->next = currentNode->next;
         currentNode->next = newNode;
     }
@@ -81,7 +85,7 @@ int deleteMinPQ(PQueue* queue, int* key){
         return -1;
     }
     if(key == NULL){
-        return -2;
+        return -1;
     }
     if(queue->size == 1){
         *key = queue->rear->next->key;
@@ -93,6 +97,7 @@ int deleteMinPQ(PQueue* queue, int* key){
     Node *removeNode = queue->rear->next;
     *key = removeNode->key;
     queue->rear->next = removeNode->next;
+    queue->front = queue->rear->next;
     queue->size--;
     free(removeNode);
     return 0;
@@ -113,13 +118,12 @@ void printPQ(PQueue* queue){
         return;
     }
     Node* currentPtr = queue->rear->next;
+    printf("Current PQ is: ");
     while(currentPtr->next != queue->rear->next){
-        printf("Key: %d\tPriority: %.2f\n", currentPtr->key, currentPtr->priority);
+        printf("key %d with priority %.2f --> ", currentPtr->key, currentPtr->priority);
         currentPtr = currentPtr->next;
     }
-    printf("Key: %d\tPriority: %.2f", currentPtr->key, currentPtr->priority);
-    printf("\n");
-    printf("----------------------------------\n");
+    printf("key %d with priority %.2f --> NULL", currentPtr->key, currentPtr->priority);
 }
 
 void freePQ(PQueue* queue){
