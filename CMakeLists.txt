@@ -54,4 +54,6 @@ add_executable(lab10a.c In-ClassLabs/New_Labs/lab10a.c)
 add_executable(Nathan_prelab7.c Side-projects/Nathan_prelab7.c)
 add_executable(pralab11.c Prelabs/New_Prelabs/prelab11.c)
 add_executable(lab11.c In-ClassLabs/New_Labs/lab11.c)
+add_executable(prelab12.c Prelabs/New_Prelabs/prelab12.c)
+add_executable(lab12.c In-ClassLabs/New_Labs/lab12.c)
 
