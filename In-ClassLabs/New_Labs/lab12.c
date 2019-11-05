@@ -16,8 +16,11 @@ void freePQ(PQueue*);
 
 int getSizePQ(PQueue*);
 void insertAtIndex(PQueue*, int, int);
+int binaryRecursive(PQueue*, int, int, int);
 
+int main(void){
 
+}
 
 int getSizePQ(PQueue* queue){
     /* Function receives the current priority queue and returns its size. 0(1) complexity. */
@@ -35,6 +38,25 @@ void insertAtIndex(PQueue* queue, int key, int index){
     queue->sortedArray[index] = key;
     queue->availableIdx++;
 }
+
+int binaryRecursive(PQueue* queue, int first, int last, int search){
+    /* Function receives the current priority queue, the parameters to search between, and the integer to search for.
+     * Function returns calls itself recursively until it returns an index. Function returns index or error code -1
+     * for integer not found. 0(log(N)) complexity. */
+
+    if (first <= last){
+        int middle = (first + last) / 2;
+        if (queue->sortedArray[middle] == search){
+            return middle;
+        }
+        if (queue->sortedArray[middle] > search){
+            return binaryRecursive(queue, first, middle - 1, search);
+        }
+        return binaryRecursive(queue, middle + 1, last, search);
+    }
+    return -1;
+}
+
 
 PQueue* initPQ(int capacity){
     /* Function initializes a PQueue struct with availableIdx = 0, arraySize = the input integer, and creates an integer array
@@ -90,9 +112,9 @@ int DeQueue(PQueue *queue, int *key){
 }
 
 int findIdx(PQueue* queue, int search){
-    /* This function receives the current priority queue and a query integer for searching. Then it searches this query
-     * integer in the sorted array and returns the index of the query integer if it exists, or -1 if it does not exist.
-     * 0(log(N)) complexity. */
+    /* This function receives the current priority queue and a query integer for searching. Then it calls binaryRecursive
+     * to search this query integer in the sorted array and returns the index of the query integer if it exists, or -1
+     * if it does not exist. 0(log(N)) complexity. */
 
     int first = 0;
     int last = getSizePQ(queue) - 1;
@@ -102,13 +124,10 @@ int findIdx(PQueue* queue, int search){
         if(queue->sortedArray[middle] == search){
             return middle;
         }
-        if(queue->sortedArray[middle] < search){
-            first = middle + 1;
-            middle = (first + last) / 2;
-        } else {
-            last = middle - 1;
-            middle = (first + last) / 2;
+        if(queue->sortedArray[middle] > search){
+            return binaryRecursive(queue, first, middle - 1, search);
         }
+        return binaryRecursive(queue, middle + 1, last, search);
     }
     return -1;
 }
