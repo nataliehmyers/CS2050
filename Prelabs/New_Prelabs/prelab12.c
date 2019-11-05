@@ -12,10 +12,10 @@ typedef struct {
 
 PQueue* initPQ(int);
 int insertPQ(float, PQueue*);
-int deleteMaxPQ(PQueue*, float*); // O(1)
+int DeQueue(PQueue *, float *); // O(1)
 int deleteMinPQ(PQueue*, float*);
 int getSizePQ(PQueue*); // O(1)
-int isInPQ(float, PQueue*); // O(log(N)) so must use array for binary search; N is number os objects currently in the queue
+int findIdx(float, PQueue *); // O(log(N)) so must use array for binary search; N is number os objects currently in the queue
 void freePQ(PQueue*);
 
 int insertAtIndex(PQueue*, float, int);
@@ -32,17 +32,17 @@ int main(void){
     printPQ(queue);
     insertPQ(4.1, queue);
     printPQ(queue);
-    isInPQ(0, queue);
+    findIdx(0, queue);
 
     float key = 0;
-    deleteMaxPQ(queue, &key);
+    DeQueue(queue, &key);
     printPQ(queue);
-    isInPQ(3.1, queue);
-    deleteMaxPQ(queue, &key);
+    findIdx(3.1, queue);
+    DeQueue(queue, &key);
     printPQ(queue);
-    deleteMaxPQ(queue, &key);
+    DeQueue(queue, &key);
     printPQ(queue);
-    deleteMaxPQ(queue, &key);
+    DeQueue(queue, &key);
     printPQ(queue);
 
     return 0;
@@ -87,12 +87,12 @@ int insertAtIndex(PQueue* queue, float key, int index){
     queue->size++;
 }
 
-int deleteMaxPQ(PQueue* queue, float* key){
+int DeQueue(PQueue *queue, float *key){
     *key = queue->array[queue->size].key;
     queue->size--;
 }
 
-int isInPQ(float search, PQueue* queue){
+int findIdx(float search, PQueue *queue){
     int first = 0;
     int last = getSizePQ(queue) - 1;
     int middle = (first + last) / 2;

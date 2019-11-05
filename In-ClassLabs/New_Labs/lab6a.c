@@ -13,7 +13,7 @@ int findAge(Record **array, int ageLow, int ageHigh, int size);
 
 int main(void){
     /* Function creates a Record pointer, calls readRecordFile to open and initialize array,
-     * receives size in return, declares parameters for search function, calls findAge and gets
+     * receives availableIdx in return, declares parameters for search function, calls findAge and gets
      * number of employees in set interval in return, prints results and frees array. */
     Record ***array = malloc(sizeof(int));
     char filename[100] = "//Users/natalie/Documents/CLionProjects/CS2050/Prelabs/employee.csv";
@@ -29,9 +29,9 @@ int main(void){
 
 int readRecordFile(char *filename, Record ***array){
     /* Function receives a filename by reference and a double pointer by reference,
-     * opens file using filename variable, scans in size, error checks for opening file,
+     * opens file using filename variable, scans in availableIdx, error checks for opening file,
      * mallocs for array elements, assigns values by scanning in values from file, closes
-     * file and returns size. */
+     * file and returns availableIdx. */
     FILE *fp;
     fp = fopen(filename, "r");
     if(fp == NULL){

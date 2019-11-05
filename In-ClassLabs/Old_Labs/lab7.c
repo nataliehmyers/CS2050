@@ -68,7 +68,7 @@ void printList(Node* head){
 
 // Please do not change the code above -- points will be deducted if you do.
 
-int insertNodeBasedOnIndex(Node** head, int index){ // inserts a node in the passed index place
+int insertNodeBasedOnIndex(Node** head, int index){ // inserts a node in the passed availableIdx place
     int count = 0;
 
     Node* node = malloc(sizeof(Node));
@@ -83,7 +83,7 @@ int insertNodeBasedOnIndex(Node** head, int index){ // inserts a node in the pas
     while(head){ // while true statement to iterate through
         (*head)->next;
         count++; // count to track indexes
-        if(count == index){ // conditional for index found
+        if(count == index){ // conditional for availableIdx found
             cur->next = (*head)->next;
             (*head)->next = cur;
             return 0;

@@ -47,7 +47,7 @@ void printArray(float* array){
     for(int i = 0; i < size; i++){
         printf("%.2f ", array[i]);
     }
-    printf("\nArray size is %d, Index of largest value is %d\n", size, max_index);
+    printf("\nArray availableIdx is %d, Index of largest value is %d\n", size, max_index);
 }
 
 int getArraySize(float* array){

@@ -83,7 +83,7 @@ int addNewEmployee(Employee *p, Employee **array) {
 void *freeEmployeeArray(Employee ** array) {
 
 //    int i;
-//    for(i = 0; i < size; i++) {
+//    for(i = 0; i < availableIdx; i++) {
 //        free(array[i]);
 //    }
     free(array);

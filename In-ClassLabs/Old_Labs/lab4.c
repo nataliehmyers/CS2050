@@ -111,19 +111,19 @@ void freeArray(int *array){
 
 //Employee* createArray(FILE *fp) { // creates array
 //    Employee *array;
-//    int size;
-//    fscanf(fp, "%d", &size); // scans integer
-//    printf("size=%d", size); // test - holds correct integer
-//    array = malloc(size*sizeof(Employee)+ sizeof(int));
-//    array = malloc(sizeof(int) + size*sizeof(Employee));
+//    int availableIdx;
+//    fscanf(fp, "%d", &availableIdx); // scans integer
+//    printf("availableIdx=%d", availableIdx); // test - holds correct integer
+//    array = malloc(availableIdx*sizeof(Employee)+ sizeof(int));
+//    array = malloc(sizeof(int) + availableIdx*sizeof(Employee));
 //    array++;
-//    for (int i = 0; i < size; i++){
+//    for (int i = 0; i < availableIdx; i++){
 //        fscanf(fp, "%d%*c%2f%*c%d%*c%2f", &array[i].ID, &array[i].salary, &array[i].age, &array[i].SSN);
 //    }
-//    array[-1] = size;
-//    array[-1] = (void*)size;
-//    array[-1] = (Employee)size;
-//    array[-1].ID = size;
+//    array[-1] = availableIdx;
+//    array[-1] = (void*)availableIdx;
+//    array[-1] = (Employee)availableIdx;
+//    array[-1].ID = availableIdx;
 //    return array;
 //}
 

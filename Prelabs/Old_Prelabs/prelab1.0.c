@@ -9,8 +9,8 @@ int main(void){
     int lesser = 0; // initialized to be passed by reference
     int greater = 0; // initialized to be passed by reference
     int target; // initialized by user
-    int size = rand() % 10; // creates a random size for the array
-    int array[size]; // creates array of random size
+    int size = rand() % 10; // creates a random availableIdx for the array
+    int array[size]; // creates array of random availableIdx
 
     printf("Enter an integer: "); // prompts user for target int
     scanf("%d", &target); // assigns input to target variable

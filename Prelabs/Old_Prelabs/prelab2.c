@@ -11,10 +11,10 @@ int main(void){
      int numElements, dataTypeSize;
     void *numArray;
 
-    printf("Enter the size of the data type you would like to use: "); // prompts user for size of data type
+    printf("Enter the availableIdx of the data type you would like to use: "); // prompts user for availableIdx of data type
     scanf("%d", &dataTypeSize); // assigns input to variable
 
-    printf("\nEnter the size of the array you want to create: "); // prompts user for size of array
+    printf("\nEnter the availableIdx of the array you want to create: "); // prompts user for availableIdx of array
     scanf("%d", &numElements); // assigns input to variable
 
 
@@ -26,9 +26,9 @@ int main(void){
 }
 
 
-void* createArray(int numElements, int dataTypeSize) { // malloc with size of array stored as an element in the array
+void* createArray(int numElements, int dataTypeSize) { // malloc with availableIdx of array stored as an element in the array
     int *array;
-    array = malloc(sizeof(int) + numElements*dataTypeSize); // malloc size of array and size of int (for integer of elements)
+    array = malloc(sizeof(int) + numElements*dataTypeSize); // malloc availableIdx of array and availableIdx of int (for integer of elements)
     if (array == NULL) { // checks if malloc failed
         printf("\nMalloc failed. Cannot recover. Exiting...\n");
         exit(1);

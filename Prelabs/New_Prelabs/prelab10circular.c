@@ -61,7 +61,7 @@ Queue* initQueue(){
 //        return -1;
 //    }
 //    newNode->key = k;
-//    queuePtr->size++;
+//    queuePtr->availableIdx++;
 //    if(queuePtr->headPtr == NULL){
 //        queuePtr->headPtr = newNode;
 //        queuePtr->tailPtr = newNode;
@@ -100,7 +100,7 @@ int enqueue(int k, Queue* queuePtr){
 //    if(getQsize(queuePtr) == 1){
 //        int key = queuePtr->headPtr->key;
 //        free(queuePtr->headPtr);
-//        queuePtr->size--;
+//        queuePtr->availableIdx--;
 //        queuePtr->headPtr = NULL;
 //        queuePtr->tailPtr = NULL;
 //        *keyPtr = key;
@@ -114,7 +114,7 @@ int enqueue(int k, Queue* queuePtr){
 //    int key = removeNode->key;
 //    currentPtr->next = queuePtr->headPtr;
 //    queuePtr->tailPtr = currentPtr;
-//    queuePtr->size--;
+//    queuePtr->availableIdx--;
 //    *keyPtr = key;
 //    free(removeNode);
 //    return 0;

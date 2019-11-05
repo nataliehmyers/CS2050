@@ -60,8 +60,8 @@ Employee** createEmployeeArray(int maxLength) {
     void* vp = malloc(maxLength*(sizeof(Employee*))+2*sizeof(int)); // allocates memory for void pointer
     int* ip = vp; // creates integer pointer to void pointer
     *ip = maxLength; // assigns maxLength to first element of integer array
-    ip+=1; // iterates through integer pointer to set maxLength to index -1
-    *ip = 0; // assigns index number 0 to new first element of integer array
+    ip+=1; // iterates through integer pointer to set maxLength to availableIdx -1
+    *ip = 0; // assigns availableIdx number 0 to new first element of integer array
     ip+=1; // iterates through integer pointer
     vp = ip;
     Employee** array = vp;
@@ -106,7 +106,7 @@ void *freeEmployeeArray(Employee** array) {
     for (int i = 0; i < size; i++) {
         free(array[i]);
     }
-    printf("%d size\n", size);
+    printf("%d availableIdx\n", size);
 
     free((int*)array - 2);
     array = NULL;
@@ -171,14 +171,14 @@ int addUserEmployee(Employee** array){
     free(p);
 
 
-    //freeUserArray(index, p);
-    //int index = getIndex(array);
+    //freeUserArray(availableIdx, p);
+    //int availableIdx = getIndex(array);
     //int maxLength = getSize(array);
     /*
-    if (index <= maxLength) {
-        *((new*)array + index) = *p;
+    if (availableIdx <= maxLength) {
+        *((new*)array + availableIdx) = *p;
         incrementIndex(array);
-        return index;
+        return availableIdx;
     } else {
         return -1;
     } */

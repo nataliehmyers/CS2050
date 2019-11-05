@@ -1,5 +1,5 @@
 /* a-lab10.c - Uses malloc function to allocate space (to store the string)
- * instead of creating fixed size character array */
+ * instead of creating fixed availableIdx character array */
 // Created by Natalie Myers on 11/12/18.
 
 #include <stdio.h>
@@ -26,7 +26,7 @@ int main(void) {
     for (int i =0; i < size; i++) {
         *(pointer1 + i) = *(pointer + i);
     }
-    printf("\nYou entered: %s which is size %d\n", pointer1, size); // prints end result
+    printf("\nYou entered: %s which is availableIdx %d\n", pointer1, size); // prints end result
     cipherString(pointer1, size, shift); // ciphers string
     printf("\nThe ciphered string is %s, what is the cipher key? ", pointer1);
     scanf("%d", &guess);
@@ -60,7 +60,7 @@ int main(void) {
 int getString(char *pointer) {
     int size;
 
-    printf("Enter the size of the string: ");
+    printf("Enter the availableIdx of the string: ");
     scanf("%d", &size);
     while (errorCheck(size) == 0) { // pulls return value from error check function
         printf("\nPlease enter again: ");
@@ -68,8 +68,8 @@ int getString(char *pointer) {
     }
     printf("\nPlease enter the string: ");
     scanf("%20s", pointer);
-    while (strlen(pointer) > size) { // checks if string size is larger than assigned value
-        printf("\nThe string entered is longer than the allowed size\n"
+    while (strlen(pointer) > size) { // checks if string availableIdx is larger than assigned value
+        printf("\nThe string entered is longer than the allowed availableIdx\n"
                "\nPlease enter a valid string: ");
         scanf("%20s", pointer);
     }
@@ -79,17 +79,17 @@ int getString(char *pointer) {
 
         while (strlen(pointer) > size) { /* checks new string for length if it had invalid
                                         * characters going into the first while loop */
-            printf("\nThe string entered is longer than the allowed size\n"
+            printf("\nThe string entered is longer than the allowed availableIdx\n"
                    "\nPlease enter a valid string: ");
             scanf("%20s", pointer);
         }
     }
-    size = strlen(pointer); // assigns size to the size of the result string
+    size = strlen(pointer); // assigns availableIdx to the availableIdx of the result string
     return size;
 }
 
 int errorCheck(int size) {
-    if (size < 1 || size > 20) { // checks if size is invalid
+    if (size < 1 || size > 20) { // checks if availableIdx is invalid
         return 0;
     }
     return 1;

@@ -54,8 +54,8 @@ int main(void){
         printList(listPtr);
     }
     printHead(listPtr);
-    int size = getListSize(listPtr);
-    printf("getListSize: %d\n", size);
+    int availableIdx = getListSize(listPtr);
+    printf("getListSize: %d\n", availableIdx);
     printf("insertAtTail:\n");
     for(int i = 0; i < 5; i++){
         int check = insertAtTail(k, listPtr);
@@ -67,8 +67,8 @@ int main(void){
         printList(listPtr);
     }
     printHead(listPtr);
-    size = getListSize(listPtr);
-    printf("getListSize: %d\n", size);
+    availableIdx = getListSize(listPtr);
+    printf("getListSize: %d\n", availableIdx);
     printf("removeHead:\n");
     for(int i = 0; i < 5; i++){
         int check = removeHead(listPtr);
@@ -79,8 +79,8 @@ int main(void){
         printList(listPtr);
     }
     printHead(listPtr);
-    size = getListSize(listPtr);
-    printf("getListSize: %d\n", size);
+    availableIdx = getListSize(listPtr);
+    printf("getListSize: %d\n", availableIdx);
     moveHeadToTail(listPtr);
     printList(listPtr);
     freeList(listPtr);

@@ -51,8 +51,8 @@ Employee ** createEmployeeArray(int maxLength) { // pass it maxLength and reciev
     void* vp = malloc(maxLength*(sizeof(Employee*))+2*sizeof(int)); // allocates memory for void pointer
     int* ip = vp; // creates integer pointer to void pointer
     *ip = maxLength; // assigns maxLength to first element of integer array
-    ip+=1; // iterates through integer pointer to set maxLength to index -1
-    *ip = 0; // assigns index number 0 to new first element of integer array
+    ip+=1; // iterates through integer pointer to set maxLength to availableIdx -1
+    *ip = 0; // assigns availableIdx number 0 to new first element of integer array
     ip+=1; // iterates through integer pointer
     vp = ip;
     Employee** array = vp;
@@ -65,29 +65,29 @@ Employee ** createEmployeeArray(int maxLength) { // pass it maxLength and reciev
 int getSize(Employee** array) { // pass it the double pointer and recieve maxLength as an int
     void* vp = array; // defines void pointer
     int* ip = vp; // creates integer pointer to void pointer
-    int maxLength = ip[-2]; // assigns maxLength to hidden index -2
+    int maxLength = ip[-2]; // assigns maxLength to hidden availableIdx -2
     return maxLength;
 }
 
-int getIndex(Employee** array) { // pass it the double pointer and recieve the next available index
+int getIndex(Employee** array) { // pass it the double pointer and recieve the next available availableIdx
     void* vp = array; // defines void pointer
     int* ip = vp; // creates integer pointer to void pointer
-    int index = ip[-1]; // assigns next available index to hidden index -1
+    int index = ip[-1]; // assigns next available availableIdx to hidden availableIdx -1
     return index;
 }
 
-void incrementIndex(Employee** array) { // pass it the array and it will incrememnt the index without returning
+void incrementIndex(Employee** array) { // pass it the array and it will incrememnt the availableIdx without returning
     void* vp = array; // defines void pointer
     int* ip = vp; // creates integer pointer to void pointer
     ip[-1]++; // iterates through elements
 }
 
-int addNewEmployee(Employee* p, Employee** array) { // pass it a single employee pointer and the double pointer, recieve the next available index if it passes
+int addNewEmployee(Employee* p, Employee** array) { // pass it a single employee pointer and the double pointer, recieve the next available availableIdx if it passes
     int maxLength = getSize(array); // calls getSize to find maxLength
-    int index = getIndex(array); // calls getIndex to find index
-    if (index <= maxLength) { // conditional to see if index has reached largest element
+    int index = getIndex(array); // calls getIndex to find availableIdx
+    if (index <= maxLength) { // conditional to see if availableIdx has reached largest element
         array[index] = p; // assigns open element to pointer p
-        incrementIndex(array); // increments index to next element
+        incrementIndex(array); // increments availableIdx to next element
         return index;
     } else {
         return -1;
@@ -146,9 +146,9 @@ void addEmployee(Employee** array) { // pass it the double pointer
     int index = getIndex(array);
     int maxLength = getSize(array);
 
-    new* p = malloc(index * sizeof(new)); // allocates memory for size of a new employee struct
+    new* p = malloc(index * sizeof(new)); // allocates memory for availableIdx of a new employee struct
 
-    if (index <= maxLength) { // conditional for if index has reached the end of the array
+    if (index <= maxLength) { // conditional for if availableIdx has reached the end of the array
         p->ID = index;
         p->salary = 12345;
         p->age = 34;
@@ -158,7 +158,7 @@ void addEmployee(Employee** array) { // pass it the double pointer
         printf("The employee can not be added. Array full!\n");
     }
 
-    if (index <= maxLength) { // conditional for if index has reached the end of the array
+    if (index <= maxLength) { // conditional for if availableIdx has reached the end of the array
         p->ID = index++;
         p->salary = 31236;
         p->age = 64;

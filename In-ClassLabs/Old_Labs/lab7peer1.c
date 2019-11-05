@@ -69,8 +69,8 @@ void printList(Node* head){
 // Please do not change the code above -- points will be deducted if you do.
 
 /*
- * Inserts a new node into the provided List at the given index.
- * Takes the address of the linkedList and the insertion index.
+ * Inserts a new node into the provided List at the given availableIdx.
+ * Takes the address of the linkedList and the insertion availableIdx.
  * Returns -1 if the insertion failed.
  * Returns 1 if the insertion was successful.
 */

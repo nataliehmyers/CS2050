@@ -12,9 +12,9 @@ int main() {
 
 
 
-    printf("The size of an int is: %lu\n", sizeof(int));
+    printf("The availableIdx of an int is: %lu\n", sizeof(int));
 
-    printf("The size of a long is: %lu\n\n", sizeof(long));
+    printf("The availableIdx of a long is: %lu\n\n", sizeof(long));
 
 
 

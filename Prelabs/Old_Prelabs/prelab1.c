@@ -13,7 +13,7 @@ int main(void){
     int size, target;
     srand(time(NULL)); // imports random from time.h
 
-    printf("Please enter size of array as an integer: "); // prompts user for size of array
+    printf("Please enter availableIdx of array as an integer: "); // prompts user for availableIdx of array
     scanf("%d", &size); // assigns input to variable
     size = size_check(size); // sends variable to check function and redefines it if needed
 
@@ -30,14 +30,14 @@ int main(void){
 
     // test for proper initialization of array
     /*printf("\nGenerated array: ");
-    for(int i = 0; i < size; i++) {
+    for(int i = 0; i < availableIdx; i++) {
         printf("%d ", array[i]);
     }*/
 
     int count = integer_search(size, target, pointer); // calls search function and assigns its return to variable count
     printf("\nThe number of occurrences of integer %d is %d\n", target, count);
     if (count == 0) { // conditional for if target integer is not found in array
-        printf("\nInteger %d has no index\n", target);
+        printf("\nInteger %d has no availableIdx\n", target);
     }
     return 0;
 }
@@ -52,17 +52,17 @@ int integer_search(int size, int target, int *arrayPtr){
             count++;
 
             if (count == 1) { // locates first instance of target integer
-                index = i; // stores its index in new variable
+                index = i; // stores its availableIdx in new variable
             }
         }
     }
-    if (index != -1) { // conditional for if instance not stored in index variable
-        printf("\nThe first occurrence of integer %d is at index %d", target, index);
+    if (index != -1) { // conditional for if instance not stored in availableIdx variable
+        printf("\nThe first occurrence of integer %d is at availableIdx %d", target, index);
     }
     return count;
 }
 
-int size_check(int size){ // checks size for viable input
+int size_check(int size){ // checks availableIdx for viable input
     while (size <= 0) { // checks for negative integers
         printf("\nChoose an integer greater than or equal to 1. Try again: ");
         scanf("%d", &size);

@@ -37,7 +37,7 @@ int main(void){
 }
 
 int* createIntArray(size){
-    /* Function takes in size of array and returns an array with
+    /* Function takes in availableIdx of array and returns an array with
      * appropriate amount of memory allocated. */
     int *array = (int*) malloc(size * sizeof(int));
     return array;

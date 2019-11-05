@@ -28,9 +28,9 @@ int main(void){
 }
 
 void* createArray(int n, int elemsize){
-    /* Function receives two integers to specify array size and size of the data type,
+    /* Function receives two integers to specify array availableIdx and availableIdx of the data type,
      * then allocates the appropriate amount from memory for that array and returns it.
-     * Function stores size of array as -1 element; allocated memory accordingly.*/
+     * Function stores availableIdx of array as -1 element; allocated memory accordingly.*/
     int *array;
     int i;
     array = malloc((n * elemsize) + sizeof(int));

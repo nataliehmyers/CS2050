@@ -16,7 +16,7 @@ void freeArray(void *array);
 
 int main(void){
     /* Function reads in a file, error checks for opening file, calls createArray function to receive allocated
-     * memory, calls getArraySize function for size, scans through file and assigns values, iterates through file
+     * memory, calls getArraySize function for availableIdx, scans through file and assigns values, iterates through file
      * searching for maximum ID, reserves the line for that value, and prints desired results using prior variables. */
     FILE *fp;
     char filename[100] = "/Users/natalie/Documents/CLionProjects/CS2050/cmake-build-debug/employee.csv";
@@ -41,7 +41,7 @@ int main(void){
         }
         line = i;
     }
-    printf("Array size is %d, and the maximum ID is %d\n", size, maxID);
+    printf("Array availableIdx is %d, and the maximum ID is %d\n", size, maxID);
     printf("Last employee has ID %d, age %d, salary %.2f, and SSN %d", array[line].empID, array[line].age, array[line].salary, array[line].ssn);
     fclose(fp);
     return 0;
@@ -49,14 +49,14 @@ int main(void){
 
 
 void* createArray(int size, int elemsize){
-    /* Function receives two integers to calculate size of memory to be allocated, creates that array, and returns it. */
+    /* Function receives two integers to calculate availableIdx of memory to be allocated, creates that array, and returns it. */
     int* array;
     array = malloc(size * elemsize);
     return (void*)array;
 }
 
 int getArraySize(void *array){
-    /* Function receives array by reference, accesses file, scans for first value, records it as size, and returns it. */
+    /* Function receives array by reference, accesses file, scans for first value, records it as availableIdx, and returns it. */
 
     //return *((int*)(array)-2);
 

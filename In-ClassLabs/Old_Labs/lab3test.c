@@ -70,13 +70,13 @@ void freeArray(float * array) { // frees array
     free(array-2);
 }
 
-int getArraySize(float* array) { // returns size of array
+int getArraySize(float* array) { // returns availableIdx of array
     return array[-2];
 }
 
-void printArray(int size, int maxIndex, float* array){ // prints array, index, and size
+void printArray(int size, int maxIndex, float* array){ // prints array, availableIdx, and availableIdx
 
-    printf("Array size is %d, Index of largest value is %d\n", size, maxIndex);
+    printf("Array availableIdx is %d, Index of largest value is %d\n", size, maxIndex);
     printf("Elements in the array are: ");
     for (int i = 0; i < size; i++) { // increments through array
         printf("%.2f ", array[i]);
