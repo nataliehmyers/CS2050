@@ -18,9 +18,7 @@ int getSizePQ(PQueue*);
 void insertAtIndex(PQueue*, int, int);
 int binaryRecursive(PQueue*, int, int, int);
 
-int main(void){
-
-}
+/*--------------------------------------------------*/
 
 int getSizePQ(PQueue* queue){
     /* Function receives the current priority queue and returns its size. 0(1) complexity. */

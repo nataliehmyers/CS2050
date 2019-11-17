@@ -56,4 +56,7 @@ add_executable(pralab11.c Prelabs/New_Prelabs/prelab11.c)
 add_executable(lab11.c In-ClassLabs/New_Labs/lab11.c)
 add_executable(prelab12.c Prelabs/New_Prelabs/prelab12.c)
 add_executable(lab12.c In-ClassLabs/New_Labs/lab12.c)
+add_executable(lab13 In-ClassLabs/New_Labs/lab13/main.c In-ClassLabs/New_Labs/lab13/header.c)
+add_executable(prelab14 Prelabs/New_Prelabs/prelab14/main.c Prelabs/New_Prelabs/prelab14/header.c)
+add_executable(lab14 In-ClassLabs/New_Labs/lab14/main.c In-ClassLabs/New_Labs/lab14/header.c)
 
