@@ -11,6 +11,5 @@ int main(void){
         printf("Nodes: %d\tDepth: %d\n", nodesInTree(tree), depthOfTree(tree));
         printf("Number of 3s: %d\n", nodesOfValueInTree(tree, 3));
     }
-
     return 0;
 }

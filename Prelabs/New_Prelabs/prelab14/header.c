@@ -8,7 +8,7 @@ Node* initTree(int key){
     return newNode;
 }
 
-int insertTree(Node* node, int key){
+int insertBT(treeNode* node, int key){
     int side = rand() % 2;
     if (side == 0){
         if (node->left == NULL) {
@@ -18,7 +18,7 @@ int insertTree(Node* node, int key){
             newNode->right = NULL;
             node->left = newNode;
         } else {
-            insertTree(node->left, key);
+            insertBT(node->left, key);
         }
     } else {
         if (node->right == NULL) {
@@ -28,7 +28,7 @@ int insertTree(Node* node, int key){
             newNode->right = NULL;
             node->right = newNode;
         } else {
-            insertTree(node->right, key);
+            insertBT(node->right, key);
         }
     }
 }
