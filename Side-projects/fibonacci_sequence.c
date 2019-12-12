@@ -4,27 +4,29 @@
 #include <math.h>
 #include <stdio.h>
 
-int getTarget(int);
+int getTarget();
 
 int main(void){
-    int fx, fy, sum, target;
+    int first, second, sum, target;
 
-    getTarget(target);
+    target = getTarget();
 
-    fx = 0;
-    fy = 1;
+    first = 0;
+    second = 1;
+    sum = 0;
 
     for (int i = 0; i < target; i++) {
-        sum = fx + fy;
-        fx = sum;
-        sum = fy + fx;
         printf("%d ", sum);
+        sum = first + second;
+        second = first;
+        first = sum;
     }
     return 0;
 }
 
-int getTarget(int target) {
+int getTarget(){
+    int target;
     printf("Enter how many numbers of the Fibonacci Sequence you want: ");
-    scanf("%d", target);
+    scanf("%d", &target);
     return target;
 }
